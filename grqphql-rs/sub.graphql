@@ -1,0 +1,891 @@
+# Exposes a URL that specifies the behaviour of this scalar.
+directive @specifiedBy(
+  # The URL that specifies the behaviour of this scalar.
+  url: String!
+) on SCALAR
+type _Metadata {
+  lastProcessedHeight: Int
+  lastProcessedTimestamp: Date
+  targetHeight: Int
+  chain: String
+  specName: String
+  genesisHash: String
+  indexerHealthy: Boolean
+  indexerNodeVersion: String
+  queryNodeVersion: String
+}
+
+# A floating point number that requires more precision than IEEE 754 binary 64
+scalar BigFloat
+
+# A filter to be used against BigFloat fields. All fields are combined with a logical ‘and.’
+input BigFloatFilter {
+  # Is null (if `true` is specified) or is not null (if `false` is specified).
+  isNull: Boolean
+  # Equal to the specified value.
+  equalTo: BigFloat
+  # Not equal to the specified value.
+  notEqualTo: BigFloat
+  # Not equal to the specified value, treating null like an ordinary value.
+  distinctFrom: BigFloat
+  # Equal to the specified value, treating null like an ordinary value.
+  notDistinctFrom: BigFloat
+  # Included in the specified list.
+  in: [BigFloat!]
+  # Not included in the specified list.
+  notIn: [BigFloat!]
+  # Less than the specified value.
+  lessThan: BigFloat
+  # Less than or equal to the specified value.
+  lessThanOrEqualTo: BigFloat
+  # Greater than the specified value.
+  greaterThan: BigFloat
+  # Greater than or equal to the specified value.
+  greaterThanOrEqualTo: BigFloat
+}
+
+# A filter to be used against Boolean fields. All fields are combined with a logical ‘and.’
+input BooleanFilter {
+  # Is null (if `true` is specified) or is not null (if `false` is specified).
+  isNull: Boolean
+  # Equal to the specified value.
+  equalTo: Boolean
+  # Not equal to the specified value.
+  notEqualTo: Boolean
+  # Not equal to the specified value, treating null like an ordinary value.
+  distinctFrom: Boolean
+  # Equal to the specified value, treating null like an ordinary value.
+  notDistinctFrom: Boolean
+  # Included in the specified list.
+  in: [Boolean!]
+  # Not included in the specified list.
+  notIn: [Boolean!]
+  # Less than the specified value.
+  lessThan: Boolean
+  # Less than or equal to the specified value.
+  lessThanOrEqualTo: Boolean
+  # Greater than the specified value.
+  greaterThan: Boolean
+  # Greater than or equal to the specified value.
+  greaterThanOrEqualTo: Boolean
+}
+
+# A connection to a list of `CollectionEntity` values.
+type CollectionEntitiesConnection {
+  # A list of `CollectionEntity` objects.
+  nodes: [CollectionEntity]!
+  # A list of edges which contains the `CollectionEntity` and cursor to aid in pagination.
+  edges: [CollectionEntitiesEdge!]!
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+  # The count of *all* `CollectionEntity` you could get from the connection.
+  totalCount: Int!
+}
+
+# A `CollectionEntity` edge in the connection.
+type CollectionEntitiesEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+  # The `CollectionEntity` at the end of the edge.
+  node: CollectionEntity
+}
+
+# Methods to use when ordering `CollectionEntity`.
+enum CollectionEntitiesOrderBy {
+  NATURAL
+  VERSION_ASC
+  VERSION_DESC
+  NAME_ASC
+  NAME_DESC
+  MAX_ASC
+  MAX_DESC
+  ISSUER_ASC
+  ISSUER_DESC
+  SYMBOL_ASC
+  SYMBOL_DESC
+  ID_ASC
+  ID_DESC
+  METADATA_ASC
+  METADATA_DESC
+  CURRENT_OWNER_ASC
+  CURRENT_OWNER_DESC
+  EVENTS_ASC
+  EVENTS_DESC
+  BLOCK_NUMBER_ASC
+  BLOCK_NUMBER_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+type CollectionEntity implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  version: String
+  name: String
+  max: Int
+  issuer: String
+  symbol: String
+  id: String!
+  metadata: String
+  currentOwner: String
+  events: JSON
+  blockNumber: BigFloat
+  createdAt: Datetime!
+  updatedAt: Datetime!
+  # Reads and enables pagination through a set of `NFTEntity`.
+  nfts(
+    # Only read the first `n` values of the set.
+    first: Int
+    # Only read the last `n` values of the set.
+    last: Int
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+    # The method to use when ordering `NFTEntity`.
+    orderBy: [NftEntitiesOrderBy!] = [PRIMARY_KEY_ASC]
+    # A filter to be used in determining which values should be returned by the collection.
+    filter: NFTEntityFilter
+  ): NftEntitiesConnection!
+}
+
+# A filter to be used against `CollectionEntity` object types. All fields are combined with a logical ‘and.’
+input CollectionEntityFilter {
+  # Filter by the object’s `version` field.
+  version: StringFilter
+  # Filter by the object’s `name` field.
+  name: StringFilter
+  # Filter by the object’s `max` field.
+  max: IntFilter
+  # Filter by the object’s `issuer` field.
+  issuer: StringFilter
+  # Filter by the object’s `symbol` field.
+  symbol: StringFilter
+  # Filter by the object’s `id` field.
+  id: StringFilter
+  # Filter by the object’s `metadata` field.
+  metadata: StringFilter
+  # Filter by the object’s `currentOwner` field.
+  currentOwner: StringFilter
+  # Filter by the object’s `events` field.
+  events: JSONFilter
+  # Filter by the object’s `blockNumber` field.
+  blockNumber: BigFloatFilter
+  # Filter by the object’s `createdAt` field.
+  createdAt: DatetimeFilter
+  # Filter by the object’s `updatedAt` field.
+  updatedAt: DatetimeFilter
+  # Checks for all expressions in this list.
+  and: [CollectionEntityFilter!]
+  # Checks for any expressions in this list.
+  or: [CollectionEntityFilter!]
+  # Negates the expression.
+  not: CollectionEntityFilter
+}
+
+# A location in a connection that can be used for resuming pagination.
+scalar Cursor
+
+# The day, does not include a time.
+scalar Date
+
+# A point in time as described by the [ISO
+# 8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
+scalar Datetime
+
+# A filter to be used against Datetime fields. All fields are combined with a logical ‘and.’
+input DatetimeFilter {
+  # Is null (if `true` is specified) or is not null (if `false` is specified).
+  isNull: Boolean
+  # Equal to the specified value.
+  equalTo: Datetime
+  # Not equal to the specified value.
+  notEqualTo: Datetime
+  # Not equal to the specified value, treating null like an ordinary value.
+  distinctFrom: Datetime
+  # Equal to the specified value, treating null like an ordinary value.
+  notDistinctFrom: Datetime
+  # Included in the specified list.
+  in: [Datetime!]
+  # Not included in the specified list.
+  notIn: [Datetime!]
+  # Less than the specified value.
+  lessThan: Datetime
+  # Less than or equal to the specified value.
+  lessThanOrEqualTo: Datetime
+  # Greater than the specified value.
+  greaterThan: Datetime
+  # Greater than or equal to the specified value.
+  greaterThanOrEqualTo: Datetime
+}
+
+type Emote implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: String!
+  nftId: String!
+  caller: String!
+  value: String!
+  createdAt: Datetime!
+  updatedAt: Datetime!
+  # Reads a single `NFTEntity` that is related to this `Emote`.
+  nft: NFTEntity
+}
+
+# A filter to be used against `Emote` object types. All fields are combined with a logical ‘and.’
+input EmoteFilter {
+  # Filter by the object’s `id` field.
+  id: StringFilter
+  # Filter by the object’s `nftId` field.
+  nftId: StringFilter
+  # Filter by the object’s `caller` field.
+  caller: StringFilter
+  # Filter by the object’s `value` field.
+  value: StringFilter
+  # Filter by the object’s `createdAt` field.
+  createdAt: DatetimeFilter
+  # Filter by the object’s `updatedAt` field.
+  updatedAt: DatetimeFilter
+  # Checks for all expressions in this list.
+  and: [EmoteFilter!]
+  # Checks for any expressions in this list.
+  or: [EmoteFilter!]
+  # Negates the expression.
+  not: EmoteFilter
+}
+
+# A connection to a list of `Emote` values.
+type EmotesConnection {
+  # A list of `Emote` objects.
+  nodes: [Emote]!
+  # A list of edges which contains the `Emote` and cursor to aid in pagination.
+  edges: [EmotesEdge!]!
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+  # The count of *all* `Emote` you could get from the connection.
+  totalCount: Int!
+}
+
+# A `Emote` edge in the connection.
+type EmotesEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+  # The `Emote` at the end of the edge.
+  node: Emote
+}
+
+# Methods to use when ordering `Emote`.
+enum EmotesOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  NFT_ID_ASC
+  NFT_ID_DESC
+  CALLER_ASC
+  CALLER_DESC
+  VALUE_ASC
+  VALUE_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+# A connection to a list of `FailedEntity` values.
+type FailedEntitiesConnection {
+  # A list of `FailedEntity` objects.
+  nodes: [FailedEntity]!
+  # A list of edges which contains the `FailedEntity` and cursor to aid in pagination.
+  edges: [FailedEntitiesEdge!]!
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+  # The count of *all* `FailedEntity` you could get from the connection.
+  totalCount: Int!
+}
+
+# A `FailedEntity` edge in the connection.
+type FailedEntitiesEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+  # The `FailedEntity` at the end of the edge.
+  node: FailedEntity
+}
+
+# Methods to use when ordering `FailedEntity`.
+enum FailedEntitiesOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  VALUE_ASC
+  VALUE_DESC
+  REASON_ASC
+  REASON_DESC
+  INTERACTION_ASC
+  INTERACTION_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+type FailedEntity implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: String!
+  value: String!
+  reason: String!
+  interaction: String
+  createdAt: Datetime!
+  updatedAt: Datetime!
+}
+
+# A filter to be used against `FailedEntity` object types. All fields are combined with a logical ‘and.’
+input FailedEntityFilter {
+  # Filter by the object’s `id` field.
+  id: StringFilter
+  # Filter by the object’s `value` field.
+  value: StringFilter
+  # Filter by the object’s `reason` field.
+  reason: StringFilter
+  # Filter by the object’s `interaction` field.
+  interaction: StringFilter
+  # Filter by the object’s `createdAt` field.
+  createdAt: DatetimeFilter
+  # Filter by the object’s `updatedAt` field.
+  updatedAt: DatetimeFilter
+  # Checks for all expressions in this list.
+  and: [FailedEntityFilter!]
+  # Checks for any expressions in this list.
+  or: [FailedEntityFilter!]
+  # Negates the expression.
+  not: FailedEntityFilter
+}
+
+# A filter to be used against Int fields. All fields are combined with a logical ‘and.’
+input IntFilter {
+  # Is null (if `true` is specified) or is not null (if `false` is specified).
+  isNull: Boolean
+  # Equal to the specified value.
+  equalTo: Int
+  # Not equal to the specified value.
+  notEqualTo: Int
+  # Not equal to the specified value, treating null like an ordinary value.
+  distinctFrom: Int
+  # Equal to the specified value, treating null like an ordinary value.
+  notDistinctFrom: Int
+  # Included in the specified list.
+  in: [Int!]
+  # Not included in the specified list.
+  notIn: [Int!]
+  # Less than the specified value.
+  lessThan: Int
+  # Less than or equal to the specified value.
+  lessThanOrEqualTo: Int
+  # Greater than the specified value.
+  greaterThan: Int
+  # Greater than or equal to the specified value.
+  greaterThanOrEqualTo: Int
+}
+
+# The `JSON` scalar type
+ represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+scalar JSON
+
+# A filter to be used against JSON fields. All fields are combined with a logical ‘and.’
+input JSONFilter {
+  # Is null (if `true` is specified) or is not null (if `false` is specified).
+  isNull: Boolean
+  # Equal to the specified value.
+  equalTo: JSON
+  # Not equal to the specified value.
+  notEqualTo: JSON
+  # Not equal to the specified value, treating null like an ordinary value.
+  distinctFrom: JSON
+  # Equal to the specified value, treating null like an ordinary value.
+  notDistinctFrom: JSON
+  # Included in the specified list.
+  in: [JSON!]
+  # Not included in the specified list.
+  notIn: [JSON!]
+  # Less than the specified value.
+  lessThan: JSON
+  # Less than or equal to the specified value.
+  lessThanOrEqualTo: JSON
+  # Greater than the specified value.
+  greaterThan: JSON
+  # Greater than or equal to the specified value.
+  greaterThanOrEqualTo: JSON
+  # Contains the specified JSON.
+  contains: JSON
+  # Contains the specified key.
+  containsKey: String
+  # Contains all of the specified keys.
+  containsAllKeys: [String!]
+  # Contains any of the specified keys.
+  containsAnyKeys: [String!]
+  # Contained by the specified JSON.
+  containedBy: JSON
+}
+
+# A connection to a list of `NFTEntity` values.
+type NftEntitiesConnection {
+  # A list of `NFTEntity` objects.
+  nodes: [NFTEntity]!
+  # A list of edges which contains the `NFTEntity` and cursor to aid in pagination.
+  edges: [NftEntitiesEdge!]!
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+  # The count of *all* `NFTEntity` you could get from the connection.
+  totalCount: Int!
+}
+
+# A `NFTEntity` edge in the connection.
+type NftEntitiesEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+  # The `NFTEntity` at the end of the edge.
+  node: NFTEntity
+}
+
+# Methods to use when ordering `NFTEntity`.
+enum NftEntitiesOrderBy {
+  NATURAL
+  NAME_ASC
+  NAME_DESC
+  INSTANCE_ASC
+  INSTANCE_DESC
+  TRANSFERABLE_ASC
+  TRANSFERABLE_DESC
+  COLLECTION_ID_ASC
+  COLLECTION_ID_DESC
+  ISSUER_ASC
+  ISSUER_DESC
+  SN_ASC
+  SN_DESC
+  ID_ASC
+  ID_DESC
+  METADATA_ASC
+  METADATA_DESC
+  CURRENT_OWNER_ASC
+  CURRENT_OWNER_DESC
+  PRICE_ASC
+  PRICE_DESC
+  BURNED_ASC
+  BURNED_DESC
+  BLOCK_NUMBER_ASC
+  BLOCK_NUMBER_DESC
+  EVENTS_ASC
+  EVENTS_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+type NFTEntity implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  name: String
+  instance: String
+  transferable: Int
+  collectionId: String!
+  issuer: String
+  sn: String
+  id: String!
+  metadata: String
+  currentOwner: String
+  price: BigFloat
+  burned: Boolean
+  blockNumber: BigFloat
+  events: JSON
+  createdAt: Datetime!
+  updatedAt: Datetime!
+  # Reads a single `CollectionEntity` that is related to this `NFTEntity`.
+  collection: CollectionEntity
+  # Reads and enables pagination through a set of `Emote`.
+  emotes(
+    # Only read the first `n` values of the set.
+    first: Int
+    # Only read the last `n` values of the set.
+    last: Int
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+    # The method to use when ordering `Emote`.
+    orderBy: [EmotesOrderBy!] = [PRIMARY_KEY_ASC]
+    # A filter to be used in determining which values should be returned by the collection.
+    filter: EmoteFilter
+  ): EmotesConnection!
+}
+
+# A filter to be used against `NFTEntity` object types. All fields are combined with a logical ‘and.’
+input NFTEntityFilter {
+  # Filter by the object’s `name` field.
+  name: StringFilter
+  # Filter by the object’s `instance` field.
+  instance: StringFilter
+  # Filter by the object’s `transferable` field.
+  transferable: IntFilter
+  # Filter by the object’s `collectionId` field.
+  collectionId: StringFilter
+  # Filter by the object’s `issuer` field.
+  issuer: StringFilter
+  # Filter by the object’s `sn` field.
+  sn: StringFilter
+  # Filter by the object’s `id` field.
+  id: StringFilter
+  # Filter by the object’s `metadata` field.
+  metadata: StringFilter
+  # Filter by the object’s `currentOwner` field.
+  currentOwner: StringFilter
+  # Filter by the object’s `price` field.
+  price: BigFloatFilter
+  # Filter by the object’s `burned` field.
+  burned: BooleanFilter
+  # Filter by the object’s `blockNumber` field.
+  blockNumber: BigFloatFilter
+  # Filter by the object’s `events` field.
+  events: JSONFilter
+  # Filter by the object’s `createdAt` field.
+  createdAt: DatetimeFilter
+  # Filter by the object’s `updatedAt` field.
+  updatedAt: DatetimeFilter
+  # Checks for all expressions in this list.
+  and: [NFTEntityFilter!]
+  # Checks for any expressions in this list.
+  or: [NFTEntityFilter!]
+  # Negates the expression.
+  not: NFTEntityFilter
+}
+
+# An object with a globally unique `ID`.
+interface Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+  # When paginating backwards, the cursor to continue.
+  startCursor: Cursor
+  # When paginating forwards, the cursor to continue.
+  endCursor: Cursor
+}
+
+# The root query type which gives access points into the data universe.
+type Query implements Node {
+  # Exposes the root query type nested one level down. This is helpful for Relay 1
+  # which can only query top level fields if they are in a particular form.
+  query: Query!
+  # The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
+  nodeId: ID!
+  # Fetches an object given its globally unique `ID`.
+  node(
+    # The globally unique `ID`.
+    nodeId: ID!
+  ): Node
+  # Reads and enables pagination through a set of `CollectionEntity`.
+  collectionEntities(
+    # Only read the first `n` values of the set.
+    first: Int
+    # Only read the last `n` values of the set.
+    last: Int
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+    # The method to use when ordering `CollectionEntity`.
+    orderBy: [CollectionEntitiesOrderBy!] = [PRIMARY_KEY_ASC]
+    # A filter to be used in determining which values should be returned by the collection.
+    filter: CollectionEntityFilter
+  ): CollectionEntitiesConnection
+  # Reads and enables pagination through a set of `Emote`.
+  emotes(
+    # Only read the first `n` values of the set.
+    first: Int
+    # Only read the last `n` values of the set.
+    last: Int
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+    # The method to use when ordering `Emote`.
+    orderBy: [EmotesOrderBy!] = [PRIMARY_KEY_ASC]
+    # A filter to be used in determining which values should be returned by the collection.
+    filter: EmoteFilter
+  ): EmotesConnection
+  # Reads and enables pagination through a set of `FailedEntity`.
+  failedEntities(
+    # Only read the first `n` values of the set.
+    first: Int
+    # Only read the last `n` values of the set.
+    last: Int
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+    # The method to use when ordering `FailedEntity`.
+    orderBy: [FailedEntitiesOrderBy!] = [PRIMARY_KEY_ASC]
+    # A filter to be used in determining which values should be returned by the collection.
+    filter: FailedEntityFilter
+  ): FailedEntitiesConnection
+  # Reads and enables pagination through a set of `NFTEntity`.
+  nFTEntities(
+    # Only read the first `n` values of the set.
+    first: Int
+    # Only read the last `n` values of the set.
+    last: Int
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+    # The method to use when ordering `NFTEntity`.
+    orderBy: [NftEntitiesOrderBy!] = [PRIMARY_KEY_ASC]
+    # A filter to be used in determining which values should be returned by the collection.
+    filter: NFTEntityFilter
+  ): NftEntitiesConnection
+  # Reads and enables pagination through a set of `RemarkEntity`.
+  remarkEntities(
+    # Only read the first `n` values of the set.
+    first: Int
+    # Only read the last `n` values of the set.
+    last: Int
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+    # The method to use when ordering `RemarkEntity`.
+    orderBy: [RemarkEntitiesOrderBy!] = [PRIMARY_KEY_ASC]
+    # A filter to be used in determining which values should be returned by the collection.
+    filter: RemarkEntityFilter
+  ): RemarkEntitiesConnection
+  collectionEntity(id: String!): CollectionEntity
+  emote(id: String!): Emote
+  failedEntity(id: String!): FailedEntity
+  nFTEntity(id: String!): NFTEntity
+  remarkEntity(id: String!): RemarkEntity
+  # Reads a single `CollectionEntity` using its globally unique `ID`.
+  collectionEntityByNodeId(
+    # The globally unique `ID` to be used in selecting a single `CollectionEntity`.
+    nodeId: ID!
+  ): CollectionEntity
+  # Reads a single `Emote` using its globally unique `ID`.
+  emoteByNodeId(
+    # The globally unique `ID` to be used in selecting a single `Emote`.
+    nodeId: ID!
+  ): Emote
+  # Reads a single `FailedEntity` using its globally unique `ID`.
+  failedEntityByNodeId(
+    # The globally unique `ID` to be used in selecting a single `FailedEntity`.
+    nodeId: ID!
+  ): FailedEntity
+  # Reads a single `NFTEntity` using its globally unique `ID`.
+  nFTEntityByNodeId(
+    # The globally unique `ID` to be used in selecting a single `NFTEntity`.
+    nodeId: ID!
+  ): NFTEntity
+  # Reads a single `RemarkEntity` using its globally unique `ID`.
+  remarkEntityByNodeId(
+    # The globally unique `ID` to be used in selecting a single `RemarkEntity`.
+    nodeId: ID!
+  ): RemarkEntity
+  _metadata: _Metadata
+}
+
+# A connection to a list of `RemarkEntity` values.
+type RemarkEntitiesConnection {
+  # A list of `RemarkEntity` objects.
+  nodes: [RemarkEntity]!
+  # A list of edges which contains the `RemarkEntity` and cursor to aid in pagination.
+  edges: [RemarkEntitiesEdge!]!
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+  # The count of *all* `RemarkEntity` you could get from the connection.
+  totalCount: Int!
+}
+
+# A `RemarkEntity` edge in the connection.
+type RemarkEntitiesEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+  # The `RemarkEntity` at the end of the edge.
+  node: RemarkEntity
+}
+
+# Methods to use when ordering `RemarkEntity`.
+enum RemarkEntitiesOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  VALUE_ASC
+  VALUE_DESC
+  CALLER_ASC
+  CALLER_DESC
+  BLOCK_NUMBER_ASC
+  BLOCK_NUMBER_DESC
+  INTERACTION_ASC
+  INTERACTION_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+type RemarkEntity implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: String!
+  value: String!
+  caller: String!
+  blockNumber: String!
+  interaction: String
+  createdAt: Datetime!
+  updatedAt: Datetime!
+}
+
+# A filter to be used against `RemarkEntity` object types. All fields are combined with a logical ‘and.’
+input RemarkEntityFilter {
+  # Filter by the object’s `id` field.
+  id: StringFilter
+  # Filter by the object’s `value` field.
+  value: StringFilter
+  # Filter by the object’s `caller` field.
+  caller: StringFilter
+  # Filter by the object’s `blockNumber` field.
+  blockNumber: StringFilter
+  # Filter by the object’s `interaction` field.
+  interaction: StringFilter
+  # Filter by the object’s `createdAt` field.
+  createdAt: DatetimeFilter
+  # Filter by the object’s `updatedAt` field.
+  updatedAt: DatetimeFilter
+  # Checks for all expressions in this list.
+  and: [RemarkEntityFilter!]
+  # Checks for any expressions in this list.
+  or: [RemarkEntityFilter!]
+  # Negates the expression.
+  not: RemarkEntityFilter
+}
+
+# A filter to be used against String fields. All fields are combined with a logical ‘and.’
+input StringFilter {
+  # Is null (if `true` is specified) or is not null (if `false` is specified).
+  isNull: Boolean
+  # Equal to the specified value.
+  equalTo: String
+  # Not equal to the specified value.
+  notEqualTo: String
+  # Not equal to the specified value, treating null like an ordinary value.
+  distinctFrom: String
+  # Equal to the specified value, treating null like an ordinary value.
+  notDistinctFrom: String
+  # Included in the specified list.
+  in: [String!]
+  # Not included in the specified list.
+  notIn: [String!]
+  # Less than the specified value.
+  lessThan: String
+  # Less than or equal to the specified value.
+  lessThanOrEqualTo: String
+  # Greater than the specified value.
+  greaterThan: String
+  # Greater than or equal to the specified value.
+  greaterThanOrEqualTo: String
+  # Contains the specified string (case-sensitive).
+  includes: String
+  # Does not contain the specified string (case-sensitive).
+  notIncludes: String
+  # Contains the specified string (case-insensitive).
+  includesInsensitive: String
+  # Does not contain the specified string (case-insensitive).
+  notIncludesInsensitive: String
+  # Starts with the specified string (case-sensitive).
+  startsWith: String
+  # Does not start with the specified string (case-sensitive).
+  notStartsWith: String
+  # Starts with the specified string (case-insensitive).
+  startsWithInsensitive: String
+  # Does not start with the specified string (case-insensitive).
+  notStartsWithInsensitive: String
+  # Ends with the specified string (case-sensitive).
+  endsWith: String
+  # Does not end with the specified string (case-sensitive).
+  notEndsWith: String
+  # Ends with the specified string (case-insensitive).
+  endsWithInsensitive: String
+  # Does not end with the specified string (case-insensitive).
+  notEndsWithInsensitive: String
+  # Matches the specified pattern (case-sensitive). An underscore (_) matches any
+  # single character; a percent sign (%) matches any sequence of zero or more characters.
+  like: String
+  # Does not match the specified pattern (case-sensitive). An underscore (_)
+  # matches any single character; a percent sign (%) matches any sequence of zero
+  # or more characters.
+  notLike: String
+  # Matches the specified pattern (case-insensitive). An underscore (_) matches
+  # any single character; a percent sign (%) matches any sequence of zero or more characters.
+  likeInsensitive: String
+  # Does not match the specified pattern (case-insensitive). An underscore (_)
+  # matches any single character; a percent sign (%) matches any sequence of zero
+  # or more characters.
+  notLikeInsensitive: String
+  # Equal to the specified value (case-insensitive).
+  equalToInsensitive: String
+  # Not equal to the specified value (case-insensitive).
+  notEqualToInsensitive: String
+  # Not equal to the specified value, treating null like an ordinary value (case-insensitive).
+  distinctFromInsensitive: String
+  # Equal to the specified value, treating null like an ordinary value (case-insensitive).
+  notDistinctFromInsensitive: String
+  # Included in the specified list (case-insensitive).
+  inInsensitive: [String!]
+  # Not included in the specified list (case-insensitive).
+  notInInsensitive: [String!]
+  # Less than the specified value (case-insensitive).
+  lessThanInsensitive: String
+  # Less than or equal to the specified value (case-insensitive).
+  lessThanOrEqualToInsensitive: String
+  # Greater than the specified value (case-insensitive).
+  greaterThanInsensitive: String
+  # Greater than or equal to the specified value (case-insensitive).
+  greaterThanOrEqualToInsensitive: String
+}
+

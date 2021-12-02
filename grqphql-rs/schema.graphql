@@ -1,0 +1,5097 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+# columns and relationships of "art_contest_nfts"
+type art_contest_nfts {
+  # An array relationship
+  art_contest_submissions(
+    # distinct select on columns
+    distinct_on: [art_contest_submissions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_submissions_order_by!]
+    # filter the rows returned
+    where: art_contest_submissions_bool_exp
+  ): [art_contest_submissions!]!
+  # An aggregated array relationship
+  art_contest_submissions_aggregate(
+    # distinct select on columns
+    distinct_on: [art_contest_submissions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_submissions_order_by!]
+    # filter the rows returned
+    where: art_contest_submissions_bool_exp
+  ): art_contest_submissions_aggregate!
+  id: Int!
+  nft_id: String!
+}
+
+# aggregated selection of "art_contest_nfts"
+type art_contest_nfts_aggregate {
+  aggregate: art_contest_nfts_aggregate_fields
+  nodes: [art_contest_nfts!]!
+}
+
+# aggregate fields of "art_contest_nfts"
+type art_contest_nfts_aggregate_fields {
+  avg: art_contest_nfts_avg_fields
+  count(columns: [art_contest_nfts_select_column!], distinct: Boolean): Int
+  max: art_contest_nfts_max_fields
+  min: art_contest_nfts_min_fields
+  stddev: art_contest_nfts_stddev_fields
+  stddev_pop: art_contest_nfts_stddev_pop_fields
+  stddev_samp: art_contest_nfts_stddev_samp_fields
+  sum: art_contest_nfts_sum_fields
+  var_pop: art_contest_nfts_var_pop_fields
+  var_samp: art_contest_nfts_var_samp_fields
+  variance: art_contest_nfts_variance_fields
+}
+
+# order by aggregate values of table "art_contest_nfts"
+input art_contest_nfts_aggregate_order_by {
+  avg: art_contest_nfts_avg_order_by
+  count: order_by
+  max: art_contest_nfts_max_order_by
+  min: art_contest_nfts_min_order_by
+  stddev: art_contest_nfts_stddev_order_by
+  stddev_pop: art_contest_nfts_stddev_pop_order_by
+  stddev_samp: art_contest_nfts_stddev_samp_order_by
+  sum: art_contest_nfts_sum_order_by
+  var_pop: art_contest_nfts_var_pop_order_by
+  var_samp: art_contest_nfts_var_samp_order_by
+  variance: art_contest_nfts_variance_order_by
+}
+
+# aggregate avg on columns
+type art_contest_nfts_avg_fields {
+  id: Float
+}
+
+# order by avg() on columns of table "art_contest_nfts"
+input art_contest_nfts_avg_order_by {
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "art_contest_nfts". All fields are combined with a logical 'AND'.
+input art_contest_nfts_bool_exp {
+  _and: [art_contest_nfts_bool_exp]
+  _not: art_contest_nfts_bool_exp
+  _or: [art_contest_nfts_bool_exp]
+  art_contest_submissions: art_contest_submissions_bool_exp
+  id: Int_comparison_exp
+  nft_id: String_comparison_exp
+}
+
+# aggregate max on columns
+type art_contest_nfts_max_fields {
+  id: Int
+  nft_id: String
+}
+
+# order by max() on columns of table "art_contest_nfts"
+input art_contest_nfts_max_order_by {
+  id: order_by
+  nft_id: order_by
+}
+
+# aggregate min on columns
+type art_contest_nfts_min_fields {
+  id: Int
+  nft_id: String
+}
+
+# order by min() on columns of table "art_contest_nfts"
+input art_contest_nfts_min_order_by {
+  id: order_by
+  nft_id: order_by
+}
+
+# ordering options when selecting data from "art_contest_nfts"
+input art_contest_nfts_order_by {
+  art_contest_submissions_aggregate: art_contest_submissions_aggregate_order_by
+  id: order_by
+  nft_id: order_by
+}
+
+# primary key columns input for table: "art_contest_nfts"
+input art_contest_nfts_pk_columns_input {
+  nft_id: String!
+}
+
+# select columns of table "art_contest_nfts"
+enum art_contest_nfts_select_column {
+  # column name
+  id
+  # column name
+  nft_id
+}
+
+# aggregate stddev on columns
+type art_contest_nfts_stddev_fields {
+  id: Float
+}
+
+# order by stddev() on columns of table "art_contest_nfts"
+input art_contest_nfts_stddev_order_by {
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type art_contest_nfts_stddev_pop_fields {
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "art_contest_nfts"
+input art_contest_nfts_stddev_pop_order_by {
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type art_contest_nfts_stddev_samp_fields {
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "art_contest_nfts"
+input art_contest_nfts_stddev_samp_order_by {
+  id: order_by
+}
+
+# aggregate sum on columns
+type art_contest_nfts_sum_fields {
+  id: Int
+}
+
+# order by sum() on columns of table "art_contest_nfts"
+input art_contest_nfts_sum_order_by {
+  id: order_by
+}
+
+# aggregate var_pop on columns
+type art_contest_nfts_var_pop_fields {
+  id: Float
+}
+
+# order by var_pop() on columns of table "art_contest_nfts"
+input art_contest_nfts_var_pop_order_by {
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type art_contest_nfts_var_samp_fields {
+  id: Float
+}
+
+# order by var_samp() on columns of table "art_contest_nfts"
+input art_contest_nfts_var_samp_order_by {
+  id: order_by
+}
+
+# aggregate variance on columns
+type art_contest_nfts_variance_fields {
+  id: Float
+}
+
+# order by variance() on columns of table "art_contest_nfts"
+input art_contest_nfts_variance_order_by {
+  id: order_by
+}
+
+# columns and relationships of "art_contest_submissions"
+type art_contest_submissions {
+  animation_url: String!
+  # An object relationship
+  art_contest_nft: art_contest_nfts!
+  art_id: String!
+  # An array relationship
+  art_votes(
+    # distinct select on columns
+    distinct_on: [art_contest_votes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_votes_order_by!]
+    # filter the rows returned
+    where: art_contest_votes_bool_exp
+  ): [art_contest_votes!]!
+  # An aggregated array relationship
+  art_votes_aggregate(
+    # distinct select on columns
+    distinct_on: [art_contest_votes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_votes_order_by!]
+    # filter the rows returned
+    where: art_contest_votes_bool_exp
+  ): art_contest_votes_aggregate!
+  artist_address: String!
+  created_at: timestamptz!
+  disabled: Boolean!
+  id: Int!
+  img_url: String!
+  nft_id: String!
+}
+
+# aggregated selection of "art_contest_submissions"
+type art_contest_submissions_aggregate {
+  aggregate: art_contest_submissions_aggregate_fields
+  nodes: [art_contest_submissions!]!
+}
+
+# aggregate fields of "art_contest_submissions"
+type art_contest_submissions_aggregate_fields {
+  avg: art_contest_submissions_avg_fields
+  count(
+    columns: [art_contest_submissions_select_column!]
+    distinct: Boolean
+  ): Int
+  max: art_contest_submissions_max_fields
+  min: art_contest_submissions_min_fields
+  stddev: art_contest_submissions_stddev_fields
+  stddev_pop: art_contest_submissions_stddev_pop_fields
+  stddev_samp: art_contest_submissions_stddev_samp_fields
+  sum: art_contest_submissions_sum_fields
+  var_pop: art_contest_submissions_var_pop_fields
+  var_samp: art_contest_submissions_var_samp_fields
+  variance: art_contest_submissions_variance_fields
+}
+
+# order by aggregate values of table "art_contest_submissions"
+input art_contest_submissions_aggregate_order_by {
+  avg: art_contest_submissions_avg_order_by
+  count: order_by
+  max: art_contest_submissions_max_order_by
+  min: art_contest_submissions_min_order_by
+  stddev: art_contest_submissions_stddev_order_by
+  stddev_pop: art_contest_submissions_stddev_pop_order_by
+  stddev_samp: art_contest_submissions_stddev_samp_order_by
+  sum: art_contest_submissions_sum_order_by
+  var_pop: art_contest_submissions_var_pop_order_by
+  var_samp: art_contest_submissions_var_samp_order_by
+  variance: art_contest_submissions_variance_order_by
+}
+
+# aggregate avg on columns
+type art_contest_submissions_avg_fields {
+  id: Float
+}
+
+# order by avg() on columns of table "art_contest_submissions"
+input art_contest_submissions_avg_order_by {
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "art_contest_submissions". All fields are combined with a logical 'AND'.
+input art_contest_submissions_bool_exp {
+  _and: [art_contest_submissions_bool_exp]
+  _not: art_contest_submissions_bool_exp
+  _or: [art_contest_submissions_bool_exp]
+  animation_url: String_comparison_exp
+  art_contest_nft: art_contest_nfts_bool_exp
+  art_id: String_comparison_exp
+  art_votes: art_contest_votes_bool_exp
+  artist_address: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  disabled: Boolean_comparison_exp
+  id: Int_comparison_exp
+  img_url: String_comparison_exp
+  nft_id: String_comparison_exp
+}
+
+# aggregate max on columns
+type art_contest_submissions_max_fields {
+  animation_url: String
+  art_id: String
+  artist_address: String
+  created_at: timestamptz
+  id: Int
+  img_url: String
+  nft_id: String
+}
+
+# order by max() on columns of table "art_contest_submissions"
+input art_contest_submissions_max_order_by {
+  animation_url: order_by
+  art_id: order_by
+  artist_address: order_by
+  created_at: order_by
+  id: order_by
+  img_url: order_by
+  nft_id: order_by
+}
+
+# aggregate min on columns
+type art_contest_submissions_min_fields {
+  animation_url: String
+  art_id: String
+  artist_address: String
+  created_at: timestamptz
+  id: Int
+  img_url: String
+  nft_id: String
+}
+
+# order by min() on columns of table "art_contest_submissions"
+input art_contest_submissions_min_order_by {
+  animation_url: order_by
+  art_id: order_by
+  artist_address: order_by
+  created_at: order_by
+  id: order_by
+  img_url: order_by
+  nft_id: order_by
+}
+
+# ordering options when selecting data from "art_contest_submissions"
+input art_contest_submissions_order_by {
+  animation_url: order_by
+  art_contest_nft: art_contest_nfts_order_by
+  art_id: order_by
+  art_votes_aggregate: art_contest_votes_aggregate_order_by
+  artist_address: order_by
+  created_at: order_by
+  disabled: order_by
+  id: order_by
+  img_url: order_by
+  nft_id: order_by
+}
+
+# primary key columns input for table: "art_contest_submissions"
+input art_contest_submissions_pk_columns_input {
+  id: Int!
+}
+
+# select columns of table "art_contest_submissions"
+enum art_contest_submissions_select_column {
+  # column name
+  animation_url
+  # column name
+  art_id
+  # column name
+  artist_address
+  # column name
+  created_at
+  # column name
+  disabled
+  # column name
+  id
+  # column name
+  img_url
+  # column name
+  nft_id
+}
+
+# aggregate stddev on columns
+type art_contest_submissions_stddev_fields {
+  id: Float
+}
+
+# order by stddev() on columns of table "art_contest_submissions"
+input art_contest_submissions_stddev_order_by {
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type art_contest_submissions_stddev_pop_fields {
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "art_contest_submissions"
+input art_contest_submissions_stddev_pop_order_by {
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type art_contest_submissions_stddev_samp_fields {
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "art_contest_submissions"
+input art_contest_submissions_stddev_samp_order_by {
+  id: order_by
+}
+
+# aggregate sum on columns
+type art_contest_submissions_sum_fields {
+  id: Int
+}
+
+# order by sum() on columns of table "art_contest_submissions"
+input art_contest_submissions_sum_order_by {
+  id: order_by
+}
+
+# aggregate var_pop on columns
+type art_contest_submissions_var_pop_fields {
+  id: Float
+}
+
+# order by var_pop() on columns of table "art_contest_submissions"
+input art_contest_submissions_var_pop_order_by {
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type art_contest_submissions_var_samp_fields {
+  id: Float
+}
+
+# order by var_samp() on columns of table "art_contest_submissions"
+input art_contest_submissions_var_samp_order_by {
+  id: order_by
+}
+
+# aggregate variance on columns
+type art_contest_submissions_variance_fields {
+  id: Float
+}
+
+# order by variance() on columns of table "art_contest_submissions"
+input art_contest_submissions_variance_order_by {
+  id: order_by
+}
+
+# columns and relationships of "art_contest_votes"
+type art_contest_votes {
+  art_id: String!
+  # An object relationship
+  art_votes: art_contest_submissions
+  caller: String!
+  created_at: timestamptz!
+  id: Int!
+  nft_id: String!
+  updated_at: timestamptz!
+  weight: Int!
+}
+
+# aggregated selection of "art_contest_votes"
+type art_contest_votes_aggregate {
+  aggregate: art_contest_votes_aggregate_fields
+  nodes: [art_contest_votes!]!
+}
+
+# aggregate fields of "art_contest_votes"
+type art_contest_votes_aggregate_fields {
+  avg: art_contest_votes_avg_fields
+  count(columns: [art_contest_votes_select_column!], distinct: Boolean): Int
+  max: art_contest_votes_max_fields
+  min: art_contest_votes_min_fields
+  stddev: art_contest_votes_stddev_fields
+  stddev_pop: art_contest_votes_stddev_pop_fields
+  stddev_samp: art_contest_votes_stddev_samp_fields
+  sum: art_contest_votes_sum_fields
+  var_pop: art_contest_votes_var_pop_fields
+  var_samp: art_contest_votes_var_samp_fields
+  variance: art_contest_votes_variance_fields
+}
+
+# order by aggregate values of table "art_contest_votes"
+input art_contest_votes_aggregate_order_by {
+  avg: art_contest_votes_avg_order_by
+  count: order_by
+  max: art_contest_votes_max_order_by
+  min: art_contest_votes_min_order_by
+  stddev: art_contest_votes_stddev_order_by
+  stddev_pop: art_contest_votes_stddev_pop_order_by
+  stddev_samp: art_contest_votes_stddev_samp_order_by
+  sum: art_contest_votes_sum_order_by
+  var_pop: art_contest_votes_var_pop_order_by
+  var_samp: art_contest_votes_var_samp_order_by
+  variance: art_contest_votes_variance_order_by
+}
+
+# aggregate avg on columns
+type art_contest_votes_avg_fields {
+  id: Float
+  weight: Float
+}
+
+# order by avg() on columns of table "art_contest_votes"
+input art_contest_votes_avg_order_by {
+  id: order_by
+  weight: order_by
+}
+
+# Boolean expression to filter rows from the table "art_contest_votes". All fields are combined with a logical 'AND'.
+input art_contest_votes_bool_exp {
+  _and: [art_contest_votes_bool_exp]
+  _not: art_contest_votes_bool_exp
+  _or: [art_contest_votes_bool_exp]
+  art_id: String_comparison_exp
+  art_votes: art_contest_submissions_bool_exp
+  caller: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  nft_id: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  weight: Int_comparison_exp
+}
+
+# aggregate max on columns
+type art_contest_votes_max_fields {
+  art_id: String
+  caller: String
+  created_at: timestamptz
+  id: Int
+  nft_id: String
+  updated_at: timestamptz
+  weight: Int
+}
+
+# order by max() on columns of table "art_contest_votes"
+input art_contest_votes_max_order_by {
+  art_id: order_by
+  caller: order_by
+  created_at: order_by
+  id: order_by
+  nft_id: order_by
+  updated_at: order_by
+  weight: order_by
+}
+
+# aggregate min on columns
+type art_contest_votes_min_fields {
+  art_id: String
+  caller: String
+  created_at: timestamptz
+  id: Int
+  nft_id: String
+  updated_at: timestamptz
+  weight: Int
+}
+
+# order by min() on columns of table "art_contest_votes"
+input art_contest_votes_min_order_by {
+  art_id: order_by
+  caller: order_by
+  created_at: order_by
+  id: order_by
+  nft_id: order_by
+  updated_at: order_by
+  weight: order_by
+}
+
+# ordering options when selecting data from "art_contest_votes"
+input art_contest_votes_order_by {
+  art_id: order_by
+  art_votes: art_contest_submissions_order_by
+  caller: order_by
+  created_at: order_by
+  id: order_by
+  nft_id: order_by
+  updated_at: order_by
+  weight: order_by
+}
+
+# primary key columns input for table: "art_contest_votes"
+input art_contest_votes_pk_columns_input {
+  caller: String!
+  nft_id: String!
+}
+
+# select columns of table "art_contest_votes"
+enum art_contest_votes_select_column {
+  # column name
+  art_id
+  # column name
+  caller
+  # column name
+  created_at
+  # column name
+  id
+  # column name
+  nft_id
+  # column name
+  updated_at
+  # column name
+  weight
+}
+
+# aggregate stddev on columns
+type art_contest_votes_stddev_fields {
+  id: Float
+  weight: Float
+}
+
+# order by stddev() on columns of table "art_contest_votes"
+input art_contest_votes_stddev_order_by {
+  id: order_by
+  weight: order_by
+}
+
+# aggregate stddev_pop on columns
+type art_contest_votes_stddev_pop_fields {
+  id: Float
+  weight: Float
+}
+
+# order by stddev_pop() on columns of table "art_contest_votes"
+input art_contest_votes_stddev_pop_order_by {
+  id: order_by
+  weight: order_by
+}
+
+# aggregate stddev_samp on columns
+type art_contest_votes_stddev_samp_fields {
+  id: Float
+  weight: Float
+}
+
+# order by stddev_samp() on columns of table "art_contest_votes"
+input art_contest_votes_stddev_samp_order_by {
+  id: order_by
+  weight: order_by
+}
+
+# aggregate sum on columns
+type art_contest_votes_sum_fields {
+  id: Int
+  weight: Int
+}
+
+# order by sum() on columns of table "art_contest_votes"
+input art_contest_votes_sum_order_by {
+  id: order_by
+  weight: order_by
+}
+
+# aggregate var_pop on columns
+type art_contest_votes_var_pop_fields {
+  id: Float
+  weight: Float
+}
+
+# order by var_pop() on columns of table "art_contest_votes"
+input art_contest_votes_var_pop_order_by {
+  id: order_by
+  weight: order_by
+}
+
+# aggregate var_samp on columns
+type art_contest_votes_var_samp_fields {
+  id: Float
+  weight: Float
+}
+
+# order by var_samp() on columns of table "art_contest_votes"
+input art_contest_votes_var_samp_order_by {
+  id: order_by
+  weight: order_by
+}
+
+# aggregate variance on columns
+type art_contest_votes_variance_fields {
+  id: Float
+  weight: Float
+}
+
+# order by variance() on columns of table "art_contest_votes"
+input art_contest_votes_variance_order_by {
+  id: order_by
+  weight: order_by
+}
+
+scalar bigint
+
+# expression to compare columns of type bigint. All fields are combined with logical 'AND'.
+input bigint_comparison_exp {
+  _eq: bigint
+  _gt: bigint
+  _gte: bigint
+  _in: [bigint!]
+  _is_null: Boolean
+  _lt: bigint
+  _lte: bigint
+  _neq: bigint
+  _nin: [bigint!]
+}
+
+# expression to compare columns of type Boolean. All fields are combined with logical 'AND'.
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
+}
+
+# columns and relationships of "changes"
+type changes {
+  block: Int!
+  caller: String!
+  # An object relationship
+  collection: collections
+  created_at: timestamptz!
+  field: String!
+  id: Int!
+  new: String!
+  # An object relationship
+  nft: nfts
+  old: String!
+  opType: String!
+  ref_id: String!
+}
+
+# aggregated selection of "changes"
+type changes_aggregate {
+  aggregate: changes_aggregate_fields
+  nodes: [changes!]!
+}
+
+# aggregate fields of "changes"
+type changes_aggregate_fields {
+  avg: changes_avg_fields
+  count(columns: [changes_select_column!], distinct: Boolean): Int
+  max: changes_max_fields
+  min: changes_min_fields
+  stddev: changes_stddev_fields
+  stddev_pop: changes_stddev_pop_fields
+  stddev_samp: changes_stddev_samp_fields
+  sum: changes_sum_fields
+  var_pop: changes_var_pop_fields
+  var_samp: changes_var_samp_fields
+  variance: changes_variance_fields
+}
+
+# order by aggregate values of table "changes"
+input changes_aggregate_order_by {
+  avg: changes_avg_order_by
+  count: order_by
+  max: changes_max_order_by
+  min: changes_min_order_by
+  stddev: changes_stddev_order_by
+  stddev_pop: changes_stddev_pop_order_by
+  stddev_samp: changes_stddev_samp_order_by
+  sum: changes_sum_order_by
+  var_pop: changes_var_pop_order_by
+  var_samp: changes_var_samp_order_by
+  variance: changes_variance_order_by
+}
+
+# aggregate avg on columns
+type changes_avg_fields {
+  block: Float
+  id: Float
+}
+
+# order by avg() on columns of table "changes"
+input changes_avg_order_by {
+  block: order_by
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "changes". All fields are combined with a logical 'AND'.
+input changes_bool_exp {
+  _and: [changes_bool_exp]
+  _not: changes_bool_exp
+  _or: [changes_bool_exp]
+  block: Int_comparison_exp
+  caller: String_comparison_exp
+  collection: collections_bool_exp
+  created_at: timestamptz_comparison_exp
+  field: String_comparison_exp
+  id: Int_comparison_exp
+  new: String_comparison_exp
+  nft: nfts_bool_exp
+  old: String_comparison_exp
+  opType: String_comparison_exp
+  ref_id: String_comparison_exp
+}
+
+# aggregate max on columns
+type changes_max_fields {
+  block: Int
+  caller: String
+  created_at: timestamptz
+  field: String
+  id: Int
+  new: String
+  old: String
+  opType: String
+  ref_id: String
+}
+
+# order by max() on columns of table "changes"
+input changes_max_order_by {
+  block: order_by
+  caller: order_by
+  created_at: order_by
+  field: order_by
+  id: order_by
+  new: order_by
+  old: order_by
+  opType: order_by
+  ref_id: order_by
+}
+
+# aggregate min on columns
+type changes_min_fields {
+  block: Int
+  caller: String
+  created_at: timestamptz
+  field: String
+  id: Int
+  new: String
+  old: String
+  opType: String
+  ref_id: String
+}
+
+# order by min() on columns of table "changes"
+input changes_min_order_by {
+  block: order_by
+  caller: order_by
+  created_at: order_by
+  field: order_by
+  id: order_by
+  new: order_by
+  old: order_by
+  opType: order_by
+  ref_id: order_by
+}
+
+# ordering options when selecting data from "changes"
+input changes_order_by {
+  block: order_by
+  caller: order_by
+  collection: collections_order_by
+  created_at: order_by
+  field: order_by
+  id: order_by
+  new: order_by
+  nft: nfts_order_by
+  old: order_by
+  opType: order_by
+  ref_id: order_by
+}
+
+# primary key columns input for table: "changes"
+input changes_pk_columns_input {
+  id: Int!
+}
+
+# select columns of table "changes"
+enum changes_select_column {
+  # column name
+  block
+  # column name
+  caller
+  # column name
+  created_at
+  # column name
+  field
+  # column name
+  id
+  # column name
+  new
+  # column name
+  old
+  # column name
+  opType
+  # column name
+  ref_id
+}
+
+# aggregate stddev on columns
+type changes_stddev_fields {
+  block: Float
+  id: Float
+}
+
+# order by stddev() on columns of table "changes"
+input changes_stddev_order_by {
+  block: order_by
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type changes_stddev_pop_fields {
+  block: Float
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "changes"
+input changes_stddev_pop_order_by {
+  block: order_by
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type changes_stddev_samp_fields {
+  block: Float
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "changes"
+input changes_stddev_samp_order_by {
+  block: order_by
+  id: order_by
+}
+
+# aggregate sum on columns
+type changes_sum_fields {
+  block: Int
+  id: Int
+}
+
+# order by sum() on columns of table "changes"
+input changes_sum_order_by {
+  block: order_by
+  id: order_by
+}
+
+# aggregate var_pop on columns
+type changes_var_pop_fields {
+  block: Float
+  id: Float
+}
+
+# order by var_pop() on columns of table "changes"
+input changes_var_pop_order_by {
+  block: order_by
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type changes_var_samp_fields {
+  block: Float
+  id: Float
+}
+
+# order by var_samp() on columns of table "changes"
+input changes_var_samp_order_by {
+  block: order_by
+  id: order_by
+}
+
+# aggregate variance on columns
+type changes_variance_fields {
+  block: Float
+  id: Float
+}
+
+# order by variance() on columns of table "changes"
+input changes_variance_order_by {
+  block: order_by
+  id: order_by
+}
+
+# columns and relationships of "collection_banners"
+type collection_banners {
+  # An object relationship
+  collection: collections
+  collection_id: String!
+  created_at: timestamptz!
+  image: String!
+}
+
+# Boolean expression to filter rows from the table "collection_banners". All fields are combined with a logical 'AND'.
+input collection_banners_bool_exp {
+  _and: [collection_banners_bool_exp]
+  _not: collection_banners_bool_exp
+  _or: [collection_banners_bool_exp]
+  collection: collections_bool_exp
+  collection_id: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  image: String_comparison_exp
+}
+
+# ordering options when selecting data from "collection_banners"
+input collection_banners_order_by {
+  collection: collections_order_by
+  collection_id: order_by
+  created_at: order_by
+  image: order_by
+}
+
+# primary key columns input for table: "collection_banners"
+input collection_banners_pk_columns_input {
+  collection_id: String!
+}
+
+# select columns of table "collection_banners"
+enum collection_banners_select_column {
+  # column name
+  collection_id
+  # column name
+  created_at
+  # column name
+  image
+}
+
+# columns and relationships of "collections"
+type collections {
+  # An object relationship
+  banner: collection_banners
+  block: Int!
+  # An array relationship
+  changes(
+    # distinct select on columns
+    distinct_on: [changes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [changes_order_by!]
+    # filter the rows returned
+    where: changes_bool_exp
+  ): [changes!]!
+  # An aggregated array relationship
+  changes_aggregate(
+    # distinct select on columns
+    distinct_on: [changes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [changes_order_by!]
+    # filter the rows returned
+    where: changes_bool_exp
+  ): changes_aggregate!
+  data(
+    # JSON select path
+    path: String
+  ): jsonb
+  id: String!
+  issuer: String!
+  max: Int!
+  metadata: String
+  name: String!
+  # An array relationship
+  nfts(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): [nfts!]!
+  # An aggregated array relationship
+  nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): nfts_aggregate!
+  # An object relationship
+  nfts_stats: nfts_stats
+  # An array relationship
+  singular_blacklisted_accounts(
+    # distinct select on columns
+    distinct_on: [singular_blacklisted_accounts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_blacklisted_accounts_order_by!]
+    # filter the rows returned
+    where: singular_blacklisted_accounts_bool_exp
+  ): [singular_blacklisted_accounts!]!
+  # An array relationship
+  singular_blacklisted_collections(
+    # distinct select on columns
+    distinct_on: [collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collections_order_by!]
+    # filter the rows returned
+    where: collections_bool_exp
+  ): [collections!]!
+  # An aggregated array relationship
+  singular_blacklisted_collections_aggregate(
+    # distinct select on columns
+    distinct_on: [collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collections_order_by!]
+    # filter the rows returned
+    where: collections_bool_exp
+  ): collections_aggregate!
+  # An array relationship
+  singular_curated(
+    # distinct select on columns
+    distinct_on: [singular_curated_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_curated_collections_order_by!]
+    # filter the rows returned
+    where: singular_curated_collections_bool_exp
+  ): [singular_curated_collections!]!
+  # An array relationship
+  singular_hidden_collections(
+    # distinct select on columns
+    distinct_on: [singular_hidden_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_hidden_collections_order_by!]
+    # filter the rows returned
+    where: singular_hidden_collections_bool_exp
+  ): [singular_hidden_collections!]!
+  # An array relationship
+  singular_nsfw_collections(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_collections_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_collections_bool_exp
+  ): [singular_nsfw_collections!]!
+  # An aggregated array relationship
+  singular_nsfw_collections_aggregate(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_collections_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_collections_bool_exp
+  ): singular_nsfw_collections_aggregate!
+  # An array relationship
+  singular_verified_collections(
+    # distinct select on columns
+    distinct_on: [singular_verified_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_verified_collections_order_by!]
+    # filter the rows returned
+    where: singular_verified_collections_bool_exp
+  ): [singular_verified_collections!]!
+  symbol: String!
+  updated_at: timestamptz!
+}
+
+# aggregated selection of "collections"
+type collections_aggregate {
+  aggregate: collections_aggregate_fields
+  nodes: [collections!]!
+}
+
+# aggregate fields of "collections"
+type collections_aggregate_fields {
+  avg: collections_avg_fields
+  count(columns: [collections_select_column!], distinct: Boolean): Int
+  max: collections_max_fields
+  min: collections_min_fields
+  stddev: collections_stddev_fields
+  stddev_pop: collections_stddev_pop_fields
+  stddev_samp: collections_stddev_samp_fields
+  sum: collections_sum_fields
+  var_pop: collections_var_pop_fields
+  var_samp: collections_var_samp_fields
+  variance: collections_variance_fields
+}
+
+# order by aggregate values of table "collections"
+input collections_aggregate_order_by {
+  avg: collections_avg_order_by
+  count: order_by
+  max: collections_max_order_by
+  min: collections_min_order_by
+  stddev: collections_stddev_order_by
+  stddev_pop: collections_stddev_pop_order_by
+  stddev_samp: collections_stddev_samp_order_by
+  sum: collections_sum_order_by
+  var_pop: collections_var_pop_order_by
+  var_samp: collections_var_samp_order_by
+  variance: collections_variance_order_by
+}
+
+# aggregate avg on columns
+type collections_avg_fields {
+  block: Float
+  max: Float
+}
+
+# order by avg() on columns of table "collections"
+input collections_avg_order_by {
+  block: order_by
+  max: order_by
+}
+
+# Boolean expression to filter rows from the table "collections". All fields are combined with a logical 'AND'.
+input collections_bool_exp {
+  _and: [collections_bool_exp]
+  _not: collections_bool_exp
+  _or: [collections_bool_exp]
+  banner: collection_banners_bool_exp
+  block: Int_comparison_exp
+  changes: changes_bool_exp
+  data: jsonb_comparison_exp
+  id: String_comparison_exp
+  issuer: String_comparison_exp
+  max: Int_comparison_exp
+  metadata: String_comparison_exp
+  name: String_comparison_exp
+  nfts: nfts_bool_exp
+  nfts_stats: nfts_stats_bool_exp
+  singular_blacklisted_accounts: singular_blacklisted_accounts_bool_exp
+  singular_blacklisted_collections: collections_bool_exp
+  singular_curated: singular_curated_collections_bool_exp
+  singular_hidden_collections: singular_hidden_collections_bool_exp
+  singular_nsfw_collections: singular_nsfw_collections_bool_exp
+  singular_verified_collections: singular_verified_collections_bool_exp
+  symbol: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# aggregate max on columns
+type collections_max_fields {
+  block: Int
+  id: String
+  issuer: String
+  max: Int
+  metadata: String
+  name: String
+  symbol: String
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "collections"
+input collections_max_order_by {
+  block: order_by
+  id: order_by
+  issuer: order_by
+  max: order_by
+  metadata: order_by
+  name: order_by
+  symbol: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type collections_min_fields {
+  block: Int
+  id: String
+  issuer: String
+  max: Int
+  metadata: String
+  name: String
+  symbol: String
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "collections"
+input collections_min_order_by {
+  block: order_by
+  id: order_by
+  issuer: order_by
+  max: order_by
+  metadata: order_by
+  name: order_by
+  symbol: order_by
+  updated_at: order_by
+}
+
+# ordering options when selecting data from "collections"
+input collections_order_by {
+  banner: collection_banners_order_by
+  block: order_by
+  changes_aggregate: changes_aggregate_order_by
+  data: order_by
+  id: order_by
+  issuer: order_by
+  max: order_by
+  metadata: order_by
+  name: order_by
+  nfts_aggregate: nfts_aggregate_order_by
+  nfts_stats: nfts_stats_order_by
+  singular_blacklisted_collections_aggregate: collections_aggregate_order_by
+  singular_nsfw_collections_aggregate: singular_nsfw_collections_aggregate_order_by
+  symbol: order_by
+  updated_at: order_by
+}
+
+# primary key columns input for table: "collections"
+input collections_pk_columns_input {
+  id: String!
+}
+
+# select columns of table "collections"
+enum collections_select_column {
+  # column name
+  block
+  # column name
+  data
+  # column name
+  id
+  # column name
+  issuer
+  # column name
+  max
+  # column name
+  metadata
+  # column name
+  name
+  # column name
+  symbol
+  # column name
+  updated_at
+}
+
+# aggregate stddev on columns
+type collections_stddev_fields {
+  block: Float
+  max: Float
+}
+
+# order by stddev() on columns of table "collections"
+input collections_stddev_order_by {
+  block: order_by
+  max: order_by
+}
+
+# aggregate stddev_pop on columns
+type collections_stddev_pop_fields {
+  block: Float
+  max: Float
+}
+
+# order by stddev_pop() on columns of table "collections"
+input collections_stddev_pop_order_by {
+  block: order_by
+  max: order_by
+}
+
+# aggregate stddev_samp on columns
+type collections_stddev_samp_fields {
+  block: Float
+  max: Float
+}
+
+# order by stddev_samp() on columns of table "collections"
+input collections_stddev_samp_order_by {
+  block: order_by
+  max: order_by
+}
+
+# aggregate sum on columns
+type collections_sum_fields {
+  block: Int
+  max: Int
+}
+
+# order by sum() on columns of table "collections"
+input collections_sum_order_by {
+  block: order_by
+  max: order_by
+}
+
+# aggregate var_pop on columns
+type collections_var_pop_fields {
+  block: Float
+  max: Float
+}
+
+# order by var_pop() on columns of table "collections"
+input collections_var_pop_order_by {
+  block: order_by
+  max: order_by
+}
+
+# aggregate var_samp on columns
+type collections_var_samp_fields {
+  block: Float
+  max: Float
+}
+
+# order by var_samp() on columns of table "collections"
+input collections_var_samp_order_by {
+  block: order_by
+  max: order_by
+}
+
+# aggregate variance on columns
+type collections_variance_fields {
+  block: Float
+  max: Float
+}
+
+# order by variance() on columns of table "collections"
+input collections_variance_order_by {
+  block: order_by
+  max: order_by
+}
+
+# columns and relationships of "distinct_nfts"
+type distinct_nfts {
+  block: Int
+  burned: String
+  # An object relationship
+  collection: collections
+  collectionId: String
+  forsale: bigint
+  id: String
+  instance: String
+  metadata: String
+  metadata_animation_url: String
+  metadata_content_type: String
+  metadata_image: String
+  metadata_name: String
+  name: String
+  owner: String
+  # An array relationship
+  singular_curated(
+    # distinct select on columns
+    distinct_on: [singular_curated_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_curated_order_by!]
+    # filter the rows returned
+    where: singular_curated_bool_exp
+  ): [singular_curated!]!
+  # An array relationship
+  singular_nsfw(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_nfts_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_nfts_bool_exp
+  ): [singular_nsfw_nfts!]!
+  # An aggregated array relationship
+  singular_nsfw_aggregate(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_nfts_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_nfts_bool_exp
+  ): singular_nsfw_nfts_aggregate!
+  sn: String
+  transferable: bigint
+  tx_block: Int
+  tx_caller: String
+  tx_pending: Boolean
+  updated_at: timestamptz
+}
+
+# aggregated selection of "distinct_nfts"
+type distinct_nfts_aggregate {
+  aggregate: distinct_nfts_aggregate_fields
+  nodes: [distinct_nfts!]!
+}
+
+# aggregate fields of "distinct_nfts"
+type distinct_nfts_aggregate_fields {
+  avg: distinct_nfts_avg_fields
+  count(columns: [distinct_nfts_select_column!], distinct: Boolean): Int
+  max: distinct_nfts_max_fields
+  min: distinct_nfts_min_fields
+  stddev: distinct_nfts_stddev_fields
+  stddev_pop: distinct_nfts_stddev_pop_fields
+  stddev_samp: distinct_nfts_stddev_samp_fields
+  sum: distinct_nfts_sum_fields
+  var_pop: distinct_nfts_var_pop_fields
+  var_samp: distinct_nfts_var_samp_fields
+  variance: distinct_nfts_variance_fields
+}
+
+# order by aggregate values of table "distinct_nfts"
+input distinct_nfts_aggregate_order_by {
+  avg: distinct_nfts_avg_order_by
+  count: order_by
+  max: distinct_nfts_max_order_by
+  min: distinct_nfts_min_order_by
+  stddev: distinct_nfts_stddev_order_by
+  stddev_pop: distinct_nfts_stddev_pop_order_by
+  stddev_samp: distinct_nfts_stddev_samp_order_by
+  sum: distinct_nfts_sum_order_by
+  var_pop: distinct_nfts_var_pop_order_by
+  var_samp: distinct_nfts_var_samp_order_by
+  variance: distinct_nfts_variance_order_by
+}
+
+# aggregate avg on columns
+type distinct_nfts_avg_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  tx_block: Float
+}
+
+# order by avg() on columns of table "distinct_nfts"
+input distinct_nfts_avg_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  tx_block: order_by
+}
+
+# Boolean expression to filter rows from the table "distinct_nfts". All fields are combined with a logical 'AND'.
+input distinct_nfts_bool_exp {
+  _and: [distinct_nfts_bool_exp]
+  _not: distinct_nfts_bool_exp
+  _or: [distinct_nfts_bool_exp]
+  block: Int_comparison_exp
+  burned: String_comparison_exp
+  collection: collections_bool_exp
+  collectionId: String_comparison_exp
+  forsale: bigint_comparison_exp
+  id: String_comparison_exp
+  instance: String_comparison_exp
+  metadata: String_comparison_exp
+  metadata_animation_url: String_comparison_exp
+  metadata_content_type: String_comparison_exp
+  metadata_image: String_comparison_exp
+  metadata_name: String_comparison_exp
+  name: String_comparison_exp
+  owner: String_comparison_exp
+  singular_curated: singular_curated_bool_exp
+  singular_nsfw: singular_nsfw_nfts_bool_exp
+  sn: String_comparison_exp
+  transferable: bigint_comparison_exp
+  tx_block: Int_comparison_exp
+  tx_caller: String_comparison_exp
+  tx_pending: Boolean_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# aggregate max on columns
+type distinct_nfts_max_fields {
+  block: Int
+  burned: String
+  collectionId: String
+  forsale: bigint
+  id: String
+  instance: String
+  metadata: String
+  metadata_animation_url: String
+  metadata_content_type: String
+  metadata_image: String
+  metadata_name: String
+  name: String
+  owner: String
+  sn: String
+  transferable: bigint
+  tx_block: Int
+  tx_caller: String
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "distinct_nfts"
+input distinct_nfts_max_order_by {
+  block: order_by
+  burned: order_by
+  collectionId: order_by
+  forsale: order_by
+  id: order_by
+  instance: order_by
+  metadata: order_by
+  metadata_animation_url: order_by
+  metadata_content_type: order_by
+  metadata_image: order_by
+  metadata_name: order_by
+  name: order_by
+  owner: order_by
+  sn: order_by
+  transferable: order_by
+  tx_block: order_by
+  tx_caller: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type distinct_nfts_min_fields {
+  block: Int
+  burned: String
+  collectionId: String
+  forsale: bigint
+  id: String
+  instance: String
+  metadata: String
+  metadata_animation_url: String
+  metadata_content_type: String
+  metadata_image: String
+  metadata_name: String
+  name: String
+  owner: String
+  sn: String
+  transferable: bigint
+  tx_block: Int
+  tx_caller: String
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "distinct_nfts"
+input distinct_nfts_min_order_by {
+  block: order_by
+  burned: order_by
+  collectionId: order_by
+  forsale: order_by
+  id: order_by
+  instance: order_by
+  metadata: order_by
+  metadata_animation_url: order_by
+  metadata_content_type: order_by
+  metadata_image: order_by
+  metadata_name: order_by
+  name: order_by
+  owner: order_by
+  sn: order_by
+  transferable: order_by
+  tx_block: order_by
+  tx_caller: order_by
+  updated_at: order_by
+}
+
+# ordering options when selecting data from "distinct_nfts"
+input distinct_nfts_order_by {
+  block: order_by
+  burned: order_by
+  collection: collections_order_by
+  collectionId: order_by
+  forsale: order_by
+  id: order_by
+  instance: order_by
+  metadata: order_by
+  metadata_animation_url: order_by
+  metadata_content_type: order_by
+  metadata_image: order_by
+  metadata_name: order_by
+  name: order_by
+  owner: order_by
+  singular_nsfw_aggregate: singular_nsfw_nfts_aggregate_order_by
+  sn: order_by
+  transferable: order_by
+  tx_block: order_by
+  tx_caller: order_by
+  tx_pending: order_by
+  updated_at: order_by
+}
+
+# select columns of table "distinct_nfts"
+enum distinct_nfts_select_column {
+  # column name
+  block
+  # column name
+  burned
+  # column name
+  collectionId
+  # column name
+  forsale
+  # column name
+  id
+  # column name
+  instance
+  # column name
+  metadata
+  # column name
+  metadata_animation_url
+  # column name
+  metadata_content_type
+  # column name
+  metadata_image
+  # column name
+  metadata_name
+  # column name
+  name
+  # column name
+  owner
+  # column name
+  sn
+  # column name
+  transferable
+  # column name
+  tx_block
+  # column name
+  tx_caller
+  # column name
+  tx_pending
+  # column name
+  updated_at
+}
+
+# aggregate stddev on columns
+type distinct_nfts_stddev_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  tx_block: Float
+}
+
+# order by stddev() on columns of table "distinct_nfts"
+input distinct_nfts_stddev_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  tx_block: order_by
+}
+
+# aggregate stddev_pop on columns
+type distinct_nfts_stddev_pop_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  tx_block: Float
+}
+
+# order by stddev_pop() on columns of table "distinct_nfts"
+input distinct_nfts_stddev_pop_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  tx_block: order_by
+}
+
+# aggregate stddev_samp on columns
+type distinct_nfts_stddev_samp_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  tx_block: Float
+}
+
+# order by stddev_samp() on columns of table "distinct_nfts"
+input distinct_nfts_stddev_samp_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  tx_block: order_by
+}
+
+# aggregate sum on columns
+type distinct_nfts_sum_fields {
+  block: Int
+  forsale: bigint
+  transferable: bigint
+  tx_block: Int
+}
+
+# order by sum() on columns of table "distinct_nfts"
+input distinct_nfts_sum_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  tx_block: order_by
+}
+
+# aggregate var_pop on columns
+type distinct_nfts_var_pop_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  tx_block: Float
+}
+
+# order by var_pop() on columns of table "distinct_nfts"
+input distinct_nfts_var_pop_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  tx_block: order_by
+}
+
+# aggregate var_samp on columns
+type distinct_nfts_var_samp_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  tx_block: Float
+}
+
+# order by var_samp() on columns of table "distinct_nfts"
+input distinct_nfts_var_samp_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  tx_block: order_by
+}
+
+# aggregate variance on columns
+type distinct_nfts_variance_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  tx_block: Float
+}
+
+# order by variance() on columns of table "distinct_nfts"
+input distinct_nfts_variance_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  tx_block: order_by
+}
+
+input get_by_unicode_args {
+  nft: String
+}
+
+# expression to compare columns of type Int. All fields are combined with logical 'AND'.
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+scalar jsonb
+
+# expression to compare columns of type jsonb. All fields are combined with logical 'AND'.
+input jsonb_comparison_exp {
+  # is the column contained in the given json value
+  _contained_in: jsonb
+  # does the column contain the given json value at the top level
+  _contains: jsonb
+  _eq: jsonb
+  _gt: jsonb
+  _gte: jsonb
+  # does the string exist as a top-level key in the column
+  _has_key: String
+  # do all of these strings exist as top-level keys in the column
+  _has_keys_all: [String!]
+  # do any of these strings exist as top-level keys in the column
+  _has_keys_any: [String!]
+  _in: [jsonb!]
+  _is_null: Boolean
+  _lt: jsonb
+  _lte: jsonb
+  _neq: jsonb
+  _nin: [jsonb!]
+}
+
+# columns and relationships of "kanaria_houou"
+type kanaria_houou {
+  created_at: timestamptz!
+  # An object relationship
+  nft: nfts!
+  nft_id: String!
+}
+
+# aggregated selection of "kanaria_houou"
+type kanaria_houou_aggregate {
+  aggregate: kanaria_houou_aggregate_fields
+  nodes: [kanaria_houou!]!
+}
+
+# aggregate fields of "kanaria_houou"
+type kanaria_houou_aggregate_fields {
+  count(columns: [kanaria_houou_select_column!], distinct: Boolean): Int
+  max: kanaria_houou_max_fields
+  min: kanaria_houou_min_fields
+}
+
+# order by aggregate values of table "kanaria_houou"
+input kanaria_houou_aggregate_order_by {
+  count: order_by
+  max: kanaria_houou_max_order_by
+  min: kanaria_houou_min_order_by
+}
+
+# Boolean expression to filter rows from the table "kanaria_houou". All fields are combined with a logical 'AND'.
+input kanaria_houou_bool_exp {
+  _and: [kanaria_houou_bool_exp]
+  _not: kanaria_houou_bool_exp
+  _or: [kanaria_houou_bool_exp]
+  created_at: timestamptz_comparison_exp
+  nft: nfts_bool_exp
+  nft_id: String_comparison_exp
+}
+
+# aggregate max on columns
+type kanaria_houou_max_fields {
+  created_at: timestamptz
+  nft_id: String
+}
+
+# order by max() on columns of table "kanaria_houou"
+input kanaria_houou_max_order_by {
+  created_at: order_by
+  nft_id: order_by
+}
+
+# aggregate min on columns
+type kanaria_houou_min_fields {
+  created_at: timestamptz
+  nft_id: String
+}
+
+# order by min() on columns of table "kanaria_houou"
+input kanaria_houou_min_order_by {
+  created_at: order_by
+  nft_id: order_by
+}
+
+# ordering options when selecting data from "kanaria_houou"
+input kanaria_houou_order_by {
+  created_at: order_by
+  nft: nfts_order_by
+  nft_id: order_by
+}
+
+# primary key columns input for table: "kanaria_houou"
+input kanaria_houou_pk_columns_input {
+  nft_id: String!
+}
+
+# select columns of table "kanaria_houou"
+enum kanaria_houou_select_column {
+  # column name
+  created_at
+  # column name
+  nft_id
+}
+
+# mutation root
+type mutation_root {
+  # update data of the table: "system"
+  update_system(
+    # sets the columns of the filtered rows to the given values
+    _set: system_set_input
+    # filter the rows which have to be updated
+    where: system_bool_exp!
+  ): system_mutation_response
+  # update single row of the table: "system"
+  update_system_by_pk(
+    # sets the columns of the filtered rows to the given values
+    _set: system_set_input
+    pk_columns: system_pk_columns_input!
+  ): system
+}
+
+# columns and relationships of "nfts"
+type nfts {
+  block: Int!
+  burned: String!
+  # An array relationship
+  changes(
+    # distinct select on columns
+    distinct_on: [changes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [changes_order_by!]
+    # filter the rows returned
+    where: changes_bool_exp
+  ): [changes!]!
+  # An aggregated array relationship
+  changes_aggregate(
+    # distinct select on columns
+    distinct_on: [changes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [changes_order_by!]
+    # filter the rows returned
+    where: changes_bool_exp
+  ): changes_aggregate!
+  # An object relationship
+  collection: collections!
+  collectionId: String!
+  data: String
+  forsale: bigint!
+  id: String!
+  id_md5: String
+  instance: String!
+  # An array relationship
+  kanaria_houou(
+    # distinct select on columns
+    distinct_on: [kanaria_houou_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [kanaria_houou_order_by!]
+    # filter the rows returned
+    where: kanaria_houou_bool_exp
+  ): [kanaria_houou!]!
+  # An aggregated array relationship
+  kanaria_houou_aggregate(
+    # distinct select on columns
+    distinct_on: [kanaria_houou_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [kanaria_houou_order_by!]
+    # filter the rows returned
+    where: kanaria_houou_bool_exp
+  ): kanaria_houou_aggregate!
+  metadata: String
+  metadata_animation_url: String
+  metadata_content_type: String
+  metadata_description: String
+  metadata_image: String
+  metadata_name: String
+  name: String!
+  # An array relationship
+  nft_reaction_stats(
+    # distinct select on columns
+    distinct_on: [nfts_reactions_stats_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_reactions_stats_order_by!]
+    # filter the rows returned
+    where: nfts_reactions_stats_bool_exp
+  ): [nfts_reactions_stats!]!
+  # An aggregated array relationship
+  nft_reaction_stats_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_reactions_stats_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_reactions_stats_order_by!]
+    # filter the rows returned
+    where: nfts_reactions_stats_bool_exp
+  ): nfts_reactions_stats_aggregate!
+  # An object relationship
+  nfts_stats: nfts_stats
+  owner: String!
+  # An array relationship
+  reactions(
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): [reactions!]!
+  # An aggregated array relationship
+  reactions_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): reactions_aggregate!
+  # An array relationship
+  singular_curated(
+    # distinct select on columns
+    distinct_on: [singular_curated_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_curated_order_by!]
+    # filter the rows returned
+    where: singular_curated_bool_exp
+  ): [singular_curated!]!
+  # An array relationship
+  singular_hidden(
+    # distinct select on columns
+    distinct_on: [singular_hidden_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_hidden_nfts_order_by!]
+    # filter the rows returned
+    where: singular_hidden_nfts_bool_exp
+  ): [singular_hidden_nfts!]!
+  # An array relationship
+  singular_nsfw(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_nfts_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_nfts_bool_exp
+  ): [singular_nsfw_nfts!]!
+  # An aggregated array relationship
+  singular_nsfw_aggregate(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_nfts_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_nfts_bool_exp
+  ): singular_nsfw_nfts_aggregate!
+  sn: String!
+  transferable: bigint!
+  txBlock: Int
+  txCaller: String
+  txPending: Boolean!
+  updatedAtBlock: Int
+  updated_at: timestamptz!
+}
+
+# aggregated selection of "nfts"
+type nfts_aggregate {
+  aggregate: nfts_aggregate_fields
+  nodes: [nfts!]!
+}
+
+# aggregate fields of "nfts"
+type nfts_aggregate_fields {
+  avg: nfts_avg_fields
+  count(columns: [nfts_select_column!], distinct: Boolean): Int
+  max: nfts_max_fields
+  min: nfts_min_fields
+  stddev: nfts_stddev_fields
+  stddev_pop: nfts_stddev_pop_fields
+  stddev_samp: nfts_stddev_samp_fields
+  sum: nfts_sum_fields
+  var_pop: nfts_var_pop_fields
+  var_samp: nfts_var_samp_fields
+  variance: nfts_variance_fields
+}
+
+# order by aggregate values of table "nfts"
+input nfts_aggregate_order_by {
+  avg: nfts_avg_order_by
+  count: order_by
+  max: nfts_max_order_by
+  min: nfts_min_order_by
+  stddev: nfts_stddev_order_by
+  stddev_pop: nfts_stddev_pop_order_by
+  stddev_samp: nfts_stddev_samp_order_by
+  sum: nfts_sum_order_by
+  var_pop: nfts_var_pop_order_by
+  var_samp: nfts_var_samp_order_by
+  variance: nfts_variance_order_by
+}
+
+# aggregate avg on columns
+type nfts_avg_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  txBlock: Float
+  updatedAtBlock: Float
+}
+
+# order by avg() on columns of table "nfts"
+input nfts_avg_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  txBlock: order_by
+  updatedAtBlock: order_by
+}
+
+# Boolean expression to filter rows from the table "nfts". All fields are combined with a logical 'AND'.
+input nfts_bool_exp {
+  _and: [nfts_bool_exp]
+  _not: nfts_bool_exp
+  _or: [nfts_bool_exp]
+  block: Int_comparison_exp
+  burned: String_comparison_exp
+  changes: changes_bool_exp
+  collection: collections_bool_exp
+  collectionId: String_comparison_exp
+  data: String_comparison_exp
+  forsale: bigint_comparison_exp
+  id: String_comparison_exp
+  id_md5: String_comparison_exp
+  instance: String_comparison_exp
+  kanaria_houou: kanaria_houou_bool_exp
+  metadata: String_comparison_exp
+  metadata_animation_url: String_comparison_exp
+  metadata_content_type: String_comparison_exp
+  metadata_description: String_comparison_exp
+  metadata_image: String_comparison_exp
+  metadata_name: String_comparison_exp
+  name: String_comparison_exp
+  nft_reaction_stats: nfts_reactions_stats_bool_exp
+  nfts_stats: nfts_stats_bool_exp
+  owner: String_comparison_exp
+  reactions: reactions_bool_exp
+  singular_curated: singular_curated_bool_exp
+  singular_hidden: singular_hidden_nfts_bool_exp
+  singular_nsfw: singular_nsfw_nfts_bool_exp
+  sn: String_comparison_exp
+  transferable: bigint_comparison_exp
+  txBlock: Int_comparison_exp
+  txCaller: String_comparison_exp
+  txPending: Boolean_comparison_exp
+  updatedAtBlock: Int_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# aggregate max on columns
+type nfts_max_fields {
+  block: Int
+  burned: String
+  collectionId: String
+  data: String
+  forsale: bigint
+  id: String
+  id_md5: String
+  instance: String
+  metadata: String
+  metadata_animation_url: String
+  metadata_content_type: String
+  metadata_description: String
+  metadata_image: String
+  metadata_name: String
+  name: String
+  owner: String
+  sn: String
+  transferable: bigint
+  txBlock: Int
+  txCaller: String
+  updatedAtBlock: Int
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "nfts"
+input nfts_max_order_by {
+  block: order_by
+  burned: order_by
+  collectionId: order_by
+  data: order_by
+  forsale: order_by
+  id: order_by
+  id_md5: order_by
+  instance: order_by
+  metadata: order_by
+  metadata_animation_url: order_by
+  metadata_content_type: order_by
+  metadata_description: order_by
+  metadata_image: order_by
+  metadata_name: order_by
+  name: order_by
+  owner: order_by
+  sn: order_by
+  transferable: order_by
+  txBlock: order_by
+  txCaller: order_by
+  updatedAtBlock: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type nfts_min_fields {
+  block: Int
+  burned: String
+  collectionId: String
+  data: String
+  forsale: bigint
+  id: String
+  id_md5: String
+  instance: String
+  metadata: String
+  metadata_animation_url: String
+  metadata_content_type: String
+  metadata_description: String
+  metadata_image: String
+  metadata_name: String
+  name: String
+  owner: String
+  sn: String
+  transferable: bigint
+  txBlock: Int
+  txCaller: String
+  updatedAtBlock: Int
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "nfts"
+input nfts_min_order_by {
+  block: order_by
+  burned: order_by
+  collectionId: order_by
+  data: order_by
+  forsale: order_by
+  id: order_by
+  id_md5: order_by
+  instance: order_by
+  metadata: order_by
+  metadata_animation_url: order_by
+  metadata_content_type: order_by
+  metadata_description: order_by
+  metadata_image: order_by
+  metadata_name: order_by
+  name: order_by
+  owner: order_by
+  sn: order_by
+  transferable: order_by
+  txBlock: order_by
+  txCaller: order_by
+  updatedAtBlock: order_by
+  updated_at: order_by
+}
+
+# ordering options when selecting data from "nfts"
+input nfts_order_by {
+  block: order_by
+  burned: order_by
+  changes_aggregate: changes_aggregate_order_by
+  collection: collections_order_by
+  collectionId: order_by
+  data: order_by
+  forsale: order_by
+  id: order_by
+  id_md5: order_by
+  instance: order_by
+  kanaria_houou_aggregate: kanaria_houou_aggregate_order_by
+  metadata: order_by
+  metadata_animation_url: order_by
+  metadata_content_type: order_by
+  metadata_description: order_by
+  metadata_image: order_by
+  metadata_name: order_by
+  name: order_by
+  nft_reaction_stats_aggregate: nfts_reactions_stats_aggregate_order_by
+  nfts_stats: nfts_stats_order_by
+  owner: order_by
+  reactions_aggregate: reactions_aggregate_order_by
+  singular_nsfw_aggregate: singular_nsfw_nfts_aggregate_order_by
+  sn: order_by
+  transferable: order_by
+  txBlock: order_by
+  txCaller: order_by
+  txPending: order_by
+  updatedAtBlock: order_by
+  updated_at: order_by
+}
+
+# primary key columns input for table: "nfts"
+input nfts_pk_columns_input {
+  id: String!
+}
+
+# columns and relationships of "nfts_reactions_stats"
+type nfts_reactions_stats {
+  count: bigint
+  nft_id: String
+  # An object relationship
+  nft_reaction_stats: nfts
+}
+
+# aggregated selection of "nfts_reactions_stats"
+type nfts_reactions_stats_aggregate {
+  aggregate: nfts_reactions_stats_aggregate_fields
+  nodes: [nfts_reactions_stats!]!
+}
+
+# aggregate fields of "nfts_reactions_stats"
+type nfts_reactions_stats_aggregate_fields {
+  avg: nfts_reactions_stats_avg_fields
+  count(columns: [nfts_reactions_stats_select_column!], distinct: Boolean): Int
+  max: nfts_reactions_stats_max_fields
+  min: nfts_reactions_stats_min_fields
+  stddev: nfts_reactions_stats_stddev_fields
+  stddev_pop: nfts_reactions_stats_stddev_pop_fields
+  stddev_samp: nfts_reactions_stats_stddev_samp_fields
+  sum: nfts_reactions_stats_sum_fields
+  var_pop: nfts_reactions_stats_var_pop_fields
+  var_samp: nfts_reactions_stats_var_samp_fields
+  variance: nfts_reactions_stats_variance_fields
+}
+
+# order by aggregate values of table "nfts_reactions_stats"
+input nfts_reactions_stats_aggregate_order_by {
+  avg: nfts_reactions_stats_avg_order_by
+  count: order_by
+  max: nfts_reactions_stats_max_order_by
+  min: nfts_reactions_stats_min_order_by
+  stddev: nfts_reactions_stats_stddev_order_by
+  stddev_pop: nfts_reactions_stats_stddev_pop_order_by
+  stddev_samp: nfts_reactions_stats_stddev_samp_order_by
+  sum: nfts_reactions_stats_sum_order_by
+  var_pop: nfts_reactions_stats_var_pop_order_by
+  var_samp: nfts_reactions_stats_var_samp_order_by
+  variance: nfts_reactions_stats_variance_order_by
+}
+
+# aggregate avg on columns
+type nfts_reactions_stats_avg_fields {
+  count: Float
+}
+
+# order by avg() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_avg_order_by {
+  count: order_by
+}
+
+# Boolean expression to filter rows from the table "nfts_reactions_stats". All fields are combined with a logical 'AND'.
+input nfts_reactions_stats_bool_exp {
+  _and: [nfts_reactions_stats_bool_exp]
+  _not: nfts_reactions_stats_bool_exp
+  _or: [nfts_reactions_stats_bool_exp]
+  count: bigint_comparison_exp
+  nft_id: String_comparison_exp
+  nft_reaction_stats: nfts_bool_exp
+}
+
+# aggregate max on columns
+type nfts_reactions_stats_max_fields {
+  count: bigint
+  nft_id: String
+}
+
+# order by max() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_max_order_by {
+  count: order_by
+  nft_id: order_by
+}
+
+# aggregate min on columns
+type nfts_reactions_stats_min_fields {
+  count: bigint
+  nft_id: String
+}
+
+# order by min() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_min_order_by {
+  count: order_by
+  nft_id: order_by
+}
+
+# ordering options when selecting data from "nfts_reactions_stats"
+input nfts_reactions_stats_order_by {
+  count: order_by
+  nft_id: order_by
+  nft_reaction_stats: nfts_order_by
+}
+
+# select columns of table "nfts_reactions_stats"
+enum nfts_reactions_stats_select_column {
+  # column name
+  count
+  # column name
+  nft_id
+}
+
+# aggregate stddev on columns
+type nfts_reactions_stats_stddev_fields {
+  count: Float
+}
+
+# order by stddev() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_stddev_order_by {
+  count: order_by
+}
+
+# aggregate stddev_pop on columns
+type nfts_reactions_stats_stddev_pop_fields {
+  count: Float
+}
+
+# order by stddev_pop() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_stddev_pop_order_by {
+  count: order_by
+}
+
+# aggregate stddev_samp on columns
+type nfts_reactions_stats_stddev_samp_fields {
+  count: Float
+}
+
+# order by stddev_samp() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_stddev_samp_order_by {
+  count: order_by
+}
+
+# aggregate sum on columns
+type nfts_reactions_stats_sum_fields {
+  count: bigint
+}
+
+# order by sum() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_sum_order_by {
+  count: order_by
+}
+
+# aggregate var_pop on columns
+type nfts_reactions_stats_var_pop_fields {
+  count: Float
+}
+
+# order by var_pop() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_var_pop_order_by {
+  count: order_by
+}
+
+# aggregate var_samp on columns
+type nfts_reactions_stats_var_samp_fields {
+  count: Float
+}
+
+# order by var_samp() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_var_samp_order_by {
+  count: order_by
+}
+
+# aggregate variance on columns
+type nfts_reactions_stats_variance_fields {
+  count: Float
+}
+
+# order by variance() on columns of table "nfts_reactions_stats"
+input nfts_reactions_stats_variance_order_by {
+  count: order_by
+}
+
+# select columns of table "nfts"
+enum nfts_select_column {
+  # column name
+  block
+  # column name
+  burned
+  # column name
+  collectionId
+  # column name
+  data
+  # column name
+  forsale
+  # column name
+  id
+  # column name
+  id_md5
+  # column name
+  instance
+  # column name
+  metadata
+  # column name
+  metadata_animation_url
+  # column name
+  metadata_content_type
+  # column name
+  metadata_description
+  # column name
+  metadata_image
+  # column name
+  metadata_name
+  # column name
+  name
+  # column name
+  owner
+  # column name
+  sn
+  # column name
+  transferable
+  # column name
+  txBlock
+  # column name
+  txCaller
+  # column name
+  txPending
+  # column name
+  updatedAtBlock
+  # column name
+  updated_at
+}
+
+# columns and relationships of "nfts_stats"
+type nfts_stats {
+  collection_id: String
+  count: bigint
+}
+
+# Boolean expression to filter rows from the table "nfts_stats". All fields are combined with a logical 'AND'.
+input nfts_stats_bool_exp {
+  _and: [nfts_stats_bool_exp]
+  _not: nfts_stats_bool_exp
+  _or: [nfts_stats_bool_exp]
+  collection_id: String_comparison_exp
+  count: bigint_comparison_exp
+}
+
+# ordering options when selecting data from "nfts_stats"
+input nfts_stats_order_by {
+  collection_id: order_by
+  count: order_by
+}
+
+# select columns of table "nfts_stats"
+enum nfts_stats_select_column {
+  # column name
+  collection_id
+  # column name
+  count
+}
+
+# aggregate stddev on columns
+type nfts_stddev_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  txBlock: Float
+  updatedAtBlock: Float
+}
+
+# order by stddev() on columns of table "nfts"
+input nfts_stddev_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  txBlock: order_by
+  updatedAtBlock: order_by
+}
+
+# aggregate stddev_pop on columns
+type nfts_stddev_pop_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  txBlock: Float
+  updatedAtBlock: Float
+}
+
+# order by stddev_pop() on columns of table "nfts"
+input nfts_stddev_pop_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  txBlock: order_by
+  updatedAtBlock: order_by
+}
+
+# aggregate stddev_samp on columns
+type nfts_stddev_samp_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  txBlock: Float
+  updatedAtBlock: Float
+}
+
+# order by stddev_samp() on columns of table "nfts"
+input nfts_stddev_samp_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  txBlock: order_by
+  updatedAtBlock: order_by
+}
+
+# aggregate sum on columns
+type nfts_sum_fields {
+  block: Int
+  forsale: bigint
+  transferable: bigint
+  txBlock: Int
+  updatedAtBlock: Int
+}
+
+# order by sum() on columns of table "nfts"
+input nfts_sum_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  txBlock: order_by
+  updatedAtBlock: order_by
+}
+
+# aggregate var_pop on columns
+type nfts_var_pop_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  txBlock: Float
+  updatedAtBlock: Float
+}
+
+# order by var_pop() on columns of table "nfts"
+input nfts_var_pop_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  txBlock: order_by
+  updatedAtBlock: order_by
+}
+
+# aggregate var_samp on columns
+type nfts_var_samp_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  txBlock: Float
+  updatedAtBlock: Float
+}
+
+# order by var_samp() on columns of table "nfts"
+input nfts_var_samp_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  txBlock: order_by
+  updatedAtBlock: order_by
+}
+
+# aggregate variance on columns
+type nfts_variance_fields {
+  block: Float
+  forsale: Float
+  transferable: Float
+  txBlock: Float
+  updatedAtBlock: Float
+}
+
+# order by variance() on columns of table "nfts"
+input nfts_variance_order_by {
+  block: order_by
+  forsale: order_by
+  transferable: order_by
+  txBlock: order_by
+  updatedAtBlock: order_by
+}
+
+# column ordering options
+enum order_by {
+  # in the ascending order, nulls last
+  asc
+  # in the ascending order, nulls first
+  asc_nulls_first
+  # in the ascending order, nulls last
+  asc_nulls_last
+  # in the descending order, nulls first
+  desc
+  # in the descending order, nulls first
+  desc_nulls_first
+  # in the descending order, nulls last
+  desc_nulls_last
+}
+
+# query root
+type query_root {
+  # fetch data from the table: "art_contest_nfts"
+  art_contest_nfts(
+    # distinct select on columns
+    distinct_on: [art_contest_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_nfts_order_by!]
+    # filter the rows returned
+    where: art_contest_nfts_bool_exp
+  ): [art_contest_nfts!]!
+  # fetch aggregated fields from the table: "art_contest_nfts"
+  art_contest_nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [art_contest_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_nfts_order_by!]
+    # filter the rows returned
+    where: art_contest_nfts_bool_exp
+  ): art_contest_nfts_aggregate!
+  # fetch data from the table: "art_contest_nfts" using primary key columns
+  art_contest_nfts_by_pk(nft_id: String!): art_contest_nfts
+  # fetch data from the table: "art_contest_submissions"
+  art_contest_submissions(
+    # distinct select on columns
+    distinct_on: [art_contest_submissions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_submissions_order_by!]
+    # filter the rows returned
+    where: art_contest_submissions_bool_exp
+  ): [art_contest_submissions!]!
+  # fetch aggregated fields from the table: "art_contest_submissions"
+  art_contest_submissions_aggregate(
+    # distinct select on columns
+    distinct_on: [art_contest_submissions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_submissions_order_by!]
+    # filter the rows returned
+    where: art_contest_submissions_bool_exp
+  ): art_contest_submissions_aggregate!
+  # fetch data from the table: "art_contest_submissions" using primary key columns
+  art_contest_submissions_by_pk(id: Int!): art_contest_submissions
+  # fetch data from the table: "art_contest_votes"
+  art_contest_votes(
+    # distinct select on columns
+    distinct_on: [art_contest_votes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_votes_order_by!]
+    # filter the rows returned
+    where: art_contest_votes_bool_exp
+  ): [art_contest_votes!]!
+  # fetch aggregated fields from the table: "art_contest_votes"
+  art_contest_votes_aggregate(
+    # distinct select on columns
+    distinct_on: [art_contest_votes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_votes_order_by!]
+    # filter the rows returned
+    where: art_contest_votes_bool_exp
+  ): art_contest_votes_aggregate!
+  # fetch data from the table: "art_contest_votes" using primary key columns
+  art_contest_votes_by_pk(caller: String!, nft_id: String!): art_contest_votes
+  # fetch data from the table: "changes"
+  changes(
+    # distinct select on columns
+    distinct_on: [changes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [changes_order_by!]
+    # filter the rows returned
+    where: changes_bool_exp
+  ): [changes!]!
+  # fetch aggregated fields from the table: "changes"
+  changes_aggregate(
+    # distinct select on columns
+    distinct_on: [changes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [changes_order_by!]
+    # filter the rows returned
+    where: changes_bool_exp
+  ): changes_aggregate!
+  # fetch data from the table: "changes" using primary key columns
+  changes_by_pk(id: Int!): changes
+  # fetch data from the table: "collection_banners"
+  collection_banners(
+    # distinct select on columns
+    distinct_on: [collection_banners_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collection_banners_order_by!]
+    # filter the rows returned
+    where: collection_banners_bool_exp
+  ): [collection_banners!]!
+  # fetch data from the table: "collection_banners" using primary key columns
+  collection_banners_by_pk(collection_id: String!): collection_banners
+  # fetch data from the table: "collections"
+  collections(
+    # distinct select on columns
+    distinct_on: [collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collections_order_by!]
+    # filter the rows returned
+    where: collections_bool_exp
+  ): [collections!]!
+  # fetch aggregated fields from the table: "collections"
+  collections_aggregate(
+    # distinct select on columns
+    distinct_on: [collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collections_order_by!]
+    # filter the rows returned
+    where: collections_bool_exp
+  ): collections_aggregate!
+  # fetch data from the table: "collections" using primary key columns
+  collections_by_pk(id: String!): collections
+  # fetch data from the table: "distinct_nfts"
+  distinct_nfts(
+    # distinct select on columns
+    distinct_on: [distinct_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [distinct_nfts_order_by!]
+    # filter the rows returned
+    where: distinct_nfts_bool_exp
+  ): [distinct_nfts!]!
+  # fetch aggregated fields from the table: "distinct_nfts"
+  distinct_nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [distinct_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [distinct_nfts_order_by!]
+    # filter the rows returned
+    where: distinct_nfts_bool_exp
+  ): distinct_nfts_aggregate!
+  # execute function "get_by_unicode" which returns "reactions"
+  get_by_unicode(
+    # input parameters for function "get_by_unicode"
+    args: get_by_unicode_args!
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): [reactions!]!
+  # execute function "get_by_unicode" and query aggregates on result of table type "reactions"
+  get_by_unicode_aggregate(
+    # input parameters for function "get_by_unicode"
+    args: get_by_unicode_args!
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): reactions_aggregate!
+  # execute function "get_newly_listed" which returns "nfts"
+  get_newly_listed(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): [nfts!]!
+  # execute function "get_newly_listed" and query aggregates on result of table type "nfts"
+  get_newly_listed_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): nfts_aggregate!
+  # execute function "get_newly_minted" which returns "nfts"
+  get_newly_minted(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): [nfts!]!
+  # execute function "get_newly_minted" and query aggregates on result of table type "nfts"
+  get_newly_minted_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): nfts_aggregate!
+  # fetch data from the table: "kanaria_houou"
+  kanaria_houou(
+    # distinct select on columns
+    distinct_on: [kanaria_houou_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [kanaria_houou_order_by!]
+    # filter the rows returned
+    where: kanaria_houou_bool_exp
+  ): [kanaria_houou!]!
+  # fetch aggregated fields from the table: "kanaria_houou"
+  kanaria_houou_aggregate(
+    # distinct select on columns
+    distinct_on: [kanaria_houou_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [kanaria_houou_order_by!]
+    # filter the rows returned
+    where: kanaria_houou_bool_exp
+  ): kanaria_houou_aggregate!
+  # fetch data from the table: "kanaria_houou" using primary key columns
+  kanaria_houou_by_pk(nft_id: String!): kanaria_houou
+  # fetch data from the table: "nfts"
+  nfts(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): [nfts!]!
+  # fetch aggregated fields from the table: "nfts"
+  nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): nfts_aggregate!
+  # fetch data from the table: "nfts" using primary key columns
+  nfts_by_pk(id: String!): nfts
+  # fetch data from the table: "nfts_reactions_stats"
+  nfts_reactions_stats(
+    # distinct select on columns
+    distinct_on: [nfts_reactions_stats_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_reactions_stats_order_by!]
+    # filter the rows returned
+    where: nfts_reactions_stats_bool_exp
+  ): [nfts_reactions_stats!]!
+  # fetch aggregated fields from the table: "nfts_reactions_stats"
+  nfts_reactions_stats_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_reactions_stats_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_reactions_stats_order_by!]
+    # filter the rows returned
+    where: nfts_reactions_stats_bool_exp
+  ): nfts_reactions_stats_aggregate!
+  # fetch data from the table: "nfts_stats"
+  nfts_stats(
+    # distinct select on columns
+    distinct_on: [nfts_stats_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_stats_order_by!]
+    # filter the rows returned
+    where: nfts_stats_bool_exp
+  ): [nfts_stats!]!
+  # fetch data from the table: "reactions"
+  reactions(
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): [reactions!]!
+  # fetch aggregated fields from the table: "reactions"
+  reactions_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): reactions_aggregate!
+  # fetch data from the table: "reactions" using primary key columns
+  reactions_by_pk(nft_id: String!, owner: String!, unicode: String!): reactions
+  # fetch data from the table: "reactions_unicode"
+  reactions_unicode(
+    # distinct select on columns
+    distinct_on: [reactions_unicode_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_unicode_order_by!]
+    # filter the rows returned
+    where: reactions_unicode_bool_exp
+  ): [reactions_unicode!]!
+  # fetch aggregated fields from the table: "reactions_unicode"
+  reactions_unicode_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_unicode_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_unicode_order_by!]
+    # filter the rows returned
+    where: reactions_unicode_bool_exp
+  ): reactions_unicode_aggregate!
+  # fetch data from the table: "reactions_users"
+  reactions_users(
+    # distinct select on columns
+    distinct_on: [reactions_users_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_users_order_by!]
+    # filter the rows returned
+    where: reactions_users_bool_exp
+  ): [reactions_users!]!
+  # fetch aggregated fields from the table: "reactions_users"
+  reactions_users_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_users_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_users_order_by!]
+    # filter the rows returned
+    where: reactions_users_bool_exp
+  ): reactions_users_aggregate!
+  # fetch data from the table: "singular_blacklisted_accounts"
+  singular_blacklisted_accounts(
+    # distinct select on columns
+    distinct_on: [singular_blacklisted_accounts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_blacklisted_accounts_order_by!]
+    # filter the rows returned
+    where: singular_blacklisted_accounts_bool_exp
+  ): [singular_blacklisted_accounts!]!
+  # fetch data from the table: "singular_blacklisted_accounts" using primary key columns
+  singular_blacklisted_accounts_by_pk(
+    account: String!
+  ): singular_blacklisted_accounts
+  # fetch data from the table: "singular_blacklisted_collections"
+  singular_blacklisted_collections(
+    # distinct select on columns
+    distinct_on: [singular_blacklisted_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_blacklisted_collections_order_by!]
+    # filter the rows returned
+    where: singular_blacklisted_collections_bool_exp
+  ): [singular_blacklisted_collections!]!
+  # fetch data from the table: "singular_blacklisted_collections" using primary key columns
+  singular_blacklisted_collections_by_pk(
+    collection_id: String!
+  ): singular_blacklisted_collections
+  # fetch data from the table: "singular_curated"
+  singular_curated(
+    # distinct select on columns
+    distinct_on: [singular_curated_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_curated_order_by!]
+    # filter the rows returned
+    where: singular_curated_bool_exp
+  ): [singular_curated!]!
+  # fetch data from the table: "singular_curated" using primary key columns
+  singular_curated_by_pk(nft_id: String!): singular_curated
+  # fetch data from the table: "singular_curated_collections"
+  singular_curated_collections(
+    # distinct select on columns
+    distinct_on: [singular_curated_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_curated_collections_order_by!]
+    # filter the rows returned
+    where: singular_curated_collections_bool_exp
+  ): [singular_curated_collections!]!
+  # fetch data from the table: "singular_curated_collections" using primary key columns
+  singular_curated_collections_by_pk(
+    collection_id: String!
+  ): singular_curated_collections
+  # fetch data from the table: "singular_hidden_collections"
+  singular_hidden_collections(
+    # distinct select on columns
+    distinct_on: [singular_hidden_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_hidden_collections_order_by!]
+    # filter the rows returned
+    where: singular_hidden_collections_bool_exp
+  ): [singular_hidden_collections!]!
+  # fetch data from the table: "singular_hidden_collections" using primary key columns
+  singular_hidden_collections_by_pk(
+    collection_id: String!
+  ): singular_hidden_collections
+  # fetch data from the table: "singular_hidden_nfts"
+  singular_hidden_nfts(
+    # distinct select on columns
+    distinct_on: [singular_hidden_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_hidden_nfts_order_by!]
+    # filter the rows returned
+    where: singular_hidden_nfts_bool_exp
+  ): [singular_hidden_nfts!]!
+  # fetch data from the table: "singular_hidden_nfts" using primary key columns
+  singular_hidden_nfts_by_pk(nft_id: String!): singular_hidden_nfts
+  # fetch data from the table: "singular_nsfw_collections"
+  singular_nsfw_collections(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_collections_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_collections_bool_exp
+  ): [singular_nsfw_collections!]!
+  # fetch aggregated fields from the table: "singular_nsfw_collections"
+  singular_nsfw_collections_aggregate(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_collections_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_collections_bool_exp
+  ): singular_nsfw_collections_aggregate!
+  # fetch data from the table: "singular_nsfw_collections" using primary key columns
+  singular_nsfw_collections_by_pk(
+    collection_id: String!
+  ): singular_nsfw_collections
+  # fetch data from the table: "singular_nsfw_nfts"
+  singular_nsfw_nfts(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_nfts_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_nfts_bool_exp
+  ): [singular_nsfw_nfts!]!
+  # fetch aggregated fields from the table: "singular_nsfw_nfts"
+  singular_nsfw_nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_nfts_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_nfts_bool_exp
+  ): singular_nsfw_nfts_aggregate!
+  # fetch data from the table: "singular_nsfw_nfts" using primary key columns
+  singular_nsfw_nfts_by_pk(nft_id: String!): singular_nsfw_nfts
+  # fetch data from the table: "singular_verified_collections"
+  singular_verified_collections(
+    # distinct select on columns
+    distinct_on: [singular_verified_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_verified_collections_order_by!]
+    # filter the rows returned
+    where: singular_verified_collections_bool_exp
+  ): [singular_verified_collections!]!
+  # fetch data from the table: "singular_verified_collections" using primary key columns
+  singular_verified_collections_by_pk(
+    collection_id: String!
+  ): singular_verified_collections
+  # fetch data from the table: "system"
+  system(
+    # distinct select on columns
+    distinct_on: [system_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [system_order_by!]
+    # filter the rows returned
+    where: system_bool_exp
+  ): [system!]!
+  # fetch data from the table: "system" using primary key columns
+  system_by_pk(purchaseEnabled: Boolean!): system
+}
+
+# columns and relationships of "reactions"
+type reactions {
+  created_at: timestamptz!
+  id: Int!
+  # An object relationship
+  nft: nfts!
+  nft_id: String!
+  owner: String!
+  # An array relationship
+  reactions_unicode(
+    # distinct select on columns
+    distinct_on: [reactions_unicode_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_unicode_order_by!]
+    # filter the rows returned
+    where: reactions_unicode_bool_exp
+  ): [reactions_unicode!]!
+  # An aggregated array relationship
+  reactions_unicode_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_unicode_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_unicode_order_by!]
+    # filter the rows returned
+    where: reactions_unicode_bool_exp
+  ): reactions_unicode_aggregate!
+  unicode: String!
+  # An array relationship
+  user_reactions(
+    # distinct select on columns
+    distinct_on: [reactions_users_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_users_order_by!]
+    # filter the rows returned
+    where: reactions_users_bool_exp
+  ): [reactions_users!]!
+  # An aggregated array relationship
+  user_reactions_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_users_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_users_order_by!]
+    # filter the rows returned
+    where: reactions_users_bool_exp
+  ): reactions_users_aggregate!
+}
+
+# aggregated selection of "reactions"
+type reactions_aggregate {
+  aggregate: reactions_aggregate_fields
+  nodes: [reactions!]!
+}
+
+# aggregate fields of "reactions"
+type reactions_aggregate_fields {
+  avg: reactions_avg_fields
+  count(columns: [reactions_select_column!], distinct: Boolean): Int
+  max: reactions_max_fields
+  min: reactions_min_fields
+  stddev: reactions_stddev_fields
+  stddev_pop: reactions_stddev_pop_fields
+  stddev_samp: reactions_stddev_samp_fields
+  sum: reactions_sum_fields
+  var_pop: reactions_var_pop_fields
+  var_samp: reactions_var_samp_fields
+  variance: reactions_variance_fields
+}
+
+# order by aggregate values of table "reactions"
+input reactions_aggregate_order_by {
+  avg: reactions_avg_order_by
+  count: order_by
+  max: reactions_max_order_by
+  min: reactions_min_order_by
+  stddev: reactions_stddev_order_by
+  stddev_pop: reactions_stddev_pop_order_by
+  stddev_samp: reactions_stddev_samp_order_by
+  sum: reactions_sum_order_by
+  var_pop: reactions_var_pop_order_by
+  var_samp: reactions_var_samp_order_by
+  variance: reactions_variance_order_by
+}
+
+# aggregate avg on columns
+type reactions_avg_fields {
+  id: Float
+}
+
+# order by avg() on columns of table "reactions"
+input reactions_avg_order_by {
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "reactions". All fields are combined with a logical 'AND'.
+input reactions_bool_exp {
+  _and: [reactions_bool_exp]
+  _not: reactions_bool_exp
+  _or: [reactions_bool_exp]
+  created_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  nft: nfts_bool_exp
+  nft_id: String_comparison_exp
+  owner: String_comparison_exp
+  reactions_unicode: reactions_unicode_bool_exp
+  unicode: String_comparison_exp
+  user_reactions: reactions_users_bool_exp
+}
+
+# aggregate max on columns
+type reactions_max_fields {
+  created_at: timestamptz
+  id: Int
+  nft_id: String
+  owner: String
+  unicode: String
+}
+
+# order by max() on columns of table "reactions"
+input reactions_max_order_by {
+  created_at: order_by
+  id: order_by
+  nft_id: order_by
+  owner: order_by
+  unicode: order_by
+}
+
+# aggregate min on columns
+type reactions_min_fields {
+  created_at: timestamptz
+  id: Int
+  nft_id: String
+  owner: String
+  unicode: String
+}
+
+# order by min() on columns of table "reactions"
+input reactions_min_order_by {
+  created_at: order_by
+  id: order_by
+  nft_id: order_by
+  owner: order_by
+  unicode: order_by
+}
+
+# ordering options when selecting data from "reactions"
+input reactions_order_by {
+  created_at: order_by
+  id: order_by
+  nft: nfts_order_by
+  nft_id: order_by
+  owner: order_by
+  reactions_unicode_aggregate: reactions_unicode_aggregate_order_by
+  unicode: order_by
+  user_reactions_aggregate: reactions_users_aggregate_order_by
+}
+
+# primary key columns input for table: "reactions"
+input reactions_pk_columns_input {
+  nft_id: String!
+  owner: String!
+  unicode: String!
+}
+
+# select columns of table "reactions"
+enum reactions_select_column {
+  # column name
+  created_at
+  # column name
+  id
+  # column name
+  nft_id
+  # column name
+  owner
+  # column name
+  unicode
+}
+
+# aggregate stddev on columns
+type reactions_stddev_fields {
+  id: Float
+}
+
+# order by stddev() on columns of table "reactions"
+input reactions_stddev_order_by {
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type reactions_stddev_pop_fields {
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "reactions"
+input reactions_stddev_pop_order_by {
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type reactions_stddev_samp_fields {
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "reactions"
+input reactions_stddev_samp_order_by {
+  id: order_by
+}
+
+# aggregate sum on columns
+type reactions_sum_fields {
+  id: Int
+}
+
+# order by sum() on columns of table "reactions"
+input reactions_sum_order_by {
+  id: order_by
+}
+
+# columns and relationships of "reactions_unicode"
+type reactions_unicode {
+  nft_id: String
+  owner: String
+  # An object relationship
+  reactions_unicode: reactions
+  unicode: String
+}
+
+# aggregated selection of "reactions_unicode"
+type reactions_unicode_aggregate {
+  aggregate: reactions_unicode_aggregate_fields
+  nodes: [reactions_unicode!]!
+}
+
+# aggregate fields of "reactions_unicode"
+type reactions_unicode_aggregate_fields {
+  count(columns: [reactions_unicode_select_column!], distinct: Boolean): Int
+  max: reactions_unicode_max_fields
+  min: reactions_unicode_min_fields
+}
+
+# order by aggregate values of table "reactions_unicode"
+input reactions_unicode_aggregate_order_by {
+  count: order_by
+  max: reactions_unicode_max_order_by
+  min: reactions_unicode_min_order_by
+}
+
+# Boolean expression to filter rows from the table "reactions_unicode". All fields are combined with a logical 'AND'.
+input reactions_unicode_bool_exp {
+  _and: [reactions_unicode_bool_exp]
+  _not: reactions_unicode_bool_exp
+  _or: [reactions_unicode_bool_exp]
+  nft_id: String_comparison_exp
+  owner: String_comparison_exp
+  reactions_unicode: reactions_bool_exp
+  unicode: String_comparison_exp
+}
+
+# aggregate max on columns
+type reactions_unicode_max_fields {
+  nft_id: String
+  owner: String
+  unicode: String
+}
+
+# order by max() on columns of table "reactions_unicode"
+input reactions_unicode_max_order_by {
+  nft_id: order_by
+  owner: order_by
+  unicode: order_by
+}
+
+# aggregate min on columns
+type reactions_unicode_min_fields {
+  nft_id: String
+  owner: String
+  unicode: String
+}
+
+# order by min() on columns of table "reactions_unicode"
+input reactions_unicode_min_order_by {
+  nft_id: order_by
+  owner: order_by
+  unicode: order_by
+}
+
+# ordering options when selecting data from "reactions_unicode"
+input reactions_unicode_order_by {
+  nft_id: order_by
+  owner: order_by
+  reactions_unicode: reactions_order_by
+  unicode: order_by
+}
+
+# select columns of table "reactions_unicode"
+enum reactions_unicode_select_column {
+  # column name
+  nft_id
+  # column name
+  owner
+  # column name
+  unicode
+}
+
+# columns and relationships of "reactions_users"
+type reactions_users {
+  nft_id: String
+  owner: String
+  unicode: String
+  # An object relationship
+  user_reactions: reactions
+}
+
+# aggregated selection of "reactions_users"
+type reactions_users_aggregate {
+  aggregate: reactions_users_aggregate_fields
+  nodes: [reactions_users!]!
+}
+
+# aggregate fields of "reactions_users"
+type reactions_users_aggregate_fields {
+  count(columns: [reactions_users_select_column!], distinct: Boolean): Int
+  max: reactions_users_max_fields
+  min: reactions_users_min_fields
+}
+
+# order by aggregate values of table "reactions_users"
+input reactions_users_aggregate_order_by {
+  count: order_by
+  max: reactions_users_max_order_by
+  min: reactions_users_min_order_by
+}
+
+# Boolean expression to filter rows from the table "reactions_users". All fields are combined with a logical 'AND'.
+input reactions_users_bool_exp {
+  _and: [reactions_users_bool_exp]
+  _not: reactions_users_bool_exp
+  _or: [reactions_users_bool_exp]
+  nft_id: String_comparison_exp
+  owner: String_comparison_exp
+  unicode: String_comparison_exp
+  user_reactions: reactions_bool_exp
+}
+
+# aggregate max on columns
+type reactions_users_max_fields {
+  nft_id: String
+  owner: String
+  unicode: String
+}
+
+# order by max() on columns of table "reactions_users"
+input reactions_users_max_order_by {
+  nft_id: order_by
+  owner: order_by
+  unicode: order_by
+}
+
+# aggregate min on columns
+type reactions_users_min_fields {
+  nft_id: String
+  owner: String
+  unicode: String
+}
+
+# order by min() on columns of table "reactions_users"
+input reactions_users_min_order_by {
+  nft_id: order_by
+  owner: order_by
+  unicode: order_by
+}
+
+# ordering options when selecting data from "reactions_users"
+input reactions_users_order_by {
+  nft_id: order_by
+  owner: order_by
+  unicode: order_by
+  user_reactions: reactions_order_by
+}
+
+# select columns of table "reactions_users"
+enum reactions_users_select_column {
+  # column name
+  nft_id
+  # column name
+  owner
+  # column name
+  unicode
+}
+
+# aggregate var_pop on columns
+type reactions_var_pop_fields {
+  id: Float
+}
+
+# order by var_pop() on columns of table "reactions"
+input reactions_var_pop_order_by {
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type reactions_var_samp_fields {
+  id: Float
+}
+
+# order by var_samp() on columns of table "reactions"
+input reactions_var_samp_order_by {
+  id: order_by
+}
+
+# aggregate variance on columns
+type reactions_variance_fields {
+  id: Float
+}
+
+# order by variance() on columns of table "reactions"
+input reactions_variance_order_by {
+  id: order_by
+}
+
+# columns and relationships of "singular_blacklisted_accounts"
+type singular_blacklisted_accounts {
+  account: String!
+  # An array relationship
+  accounts(
+    # distinct select on columns
+    distinct_on: [collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collections_order_by!]
+    # filter the rows returned
+    where: collections_bool_exp
+  ): [collections!]!
+  # An aggregated array relationship
+  accounts_aggregate(
+    # distinct select on columns
+    distinct_on: [collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collections_order_by!]
+    # filter the rows returned
+    where: collections_bool_exp
+  ): collections_aggregate!
+  created_at: timestamptz!
+}
+
+# Boolean expression to filter rows from the table
+# "singular_blacklisted_accounts". All fields are combined with a logical 'AND'.
+input singular_blacklisted_accounts_bool_exp {
+  _and: [singular_blacklisted_accounts_bool_exp]
+  _not: singular_blacklisted_accounts_bool_exp
+  _or: [singular_blacklisted_accounts_bool_exp]
+  account: String_comparison_exp
+  accounts: collections_bool_exp
+  created_at: timestamptz_comparison_exp
+}
+
+# ordering options when selecting data from "singular_blacklisted_accounts"
+input singular_blacklisted_accounts_order_by {
+  account: order_by
+  accounts_aggregate: collections_aggregate_order_by
+  created_at: order_by
+}
+
+# primary key columns input for table: "singular_blacklisted_accounts"
+input singular_blacklisted_accounts_pk_columns_input {
+  account: String!
+}
+
+# select columns of table "singular_blacklisted_accounts"
+enum singular_blacklisted_accounts_select_column {
+  # column name
+  account
+  # column name
+  created_at
+}
+
+# columns and relationships of "singular_blacklisted_collections"
+type singular_blacklisted_collections {
+  # An object relationship
+  collection: collections
+  collection_id: String!
+  created_at: timestamptz!
+}
+
+# Boolean expression to filter rows from the table
+# "singular_blacklisted_collections". All fields are combined with a logical 'AND'.
+input singular_blacklisted_collections_bool_exp {
+  _and: [singular_blacklisted_collections_bool_exp]
+  _not: singular_blacklisted_collections_bool_exp
+  _or: [singular_blacklisted_collections_bool_exp]
+  collection: collections_bool_exp
+  collection_id: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+}
+
+# ordering options when selecting data from "singular_blacklisted_collections"
+input singular_blacklisted_collections_order_by {
+  collection: collections_order_by
+  collection_id: order_by
+  created_at: order_by
+}
+
+# primary key columns input for table: "singular_blacklisted_collections"
+input singular_blacklisted_collections_pk_columns_input {
+  collection_id: String!
+}
+
+# select columns of table "singular_blacklisted_collections"
+enum singular_blacklisted_collections_select_column {
+  # column name
+  collection_id
+  # column name
+  created_at
+}
+
+# columns and relationships of "singular_curated"
+type singular_curated {
+  created_at: timestamptz!
+  # An object relationship
+  nft: nfts!
+  nft_id: String!
+}
+
+# Boolean expression to filter rows from the table "singular_curated". All fields are combined with a logical 'AND'.
+input singular_curated_bool_exp {
+  _and: [singular_curated_bool_exp]
+  _not: singular_curated_bool_exp
+  _or: [singular_curated_bool_exp]
+  created_at: timestamptz_comparison_exp
+  nft: nfts_bool_exp
+  nft_id: String_comparison_exp
+}
+
+# columns and relationships of "singular_curated_collections"
+type singular_curated_collections {
+  collection_id: String!
+  created_at: timestamptz!
+}
+
+# Boolean expression to filter rows from the table "singular_curated_collections".
+# All fields are combined with a logical 'AND'.
+input singular_curated_collections_bool_exp {
+  _and: [singular_curated_collections_bool_exp]
+  _not: singular_curated_collections_bool_exp
+  _or: [singular_curated_collections_bool_exp]
+  collection_id: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+}
+
+# ordering options when selecting data from "singular_curated_collections"
+input singular_curated_collections_order_by {
+  collection_id: order_by
+  created_at: order_by
+}
+
+# primary key columns input for table: "singular_curated_collections"
+input singular_curated_collections_pk_columns_input {
+  collection_id: String!
+}
+
+# select columns of table "singular_curated_collections"
+enum singular_curated_collections_select_column {
+  # column name
+  collection_id
+  # column name
+  created_at
+}
+
+# ordering options when selecting data from "singular_curated"
+input singular_curated_order_by {
+  created_at: order_by
+  nft: nfts_order_by
+  nft_id: order_by
+}
+
+# primary key columns input for table: "singular_curated"
+input singular_curated_pk_columns_input {
+  nft_id: String!
+}
+
+# select columns of table "singular_curated"
+enum singular_curated_select_column {
+  # column name
+  created_at
+  # column name
+  nft_id
+}
+
+# columns and relationships of "singular_hidden_collections"
+type singular_hidden_collections {
+  collection_id: String!
+  # An object relationship
+  collections: collections
+  created_at: timestamptz!
+}
+
+# Boolean expression to filter rows from the table "singular_hidden_collections".
+# All fields are combined with a logical 'AND'.
+input singular_hidden_collections_bool_exp {
+  _and: [singular_hidden_collections_bool_exp]
+  _not: singular_hidden_collections_bool_exp
+  _or: [singular_hidden_collections_bool_exp]
+  collection_id: String_comparison_exp
+  collections: collections_bool_exp
+  created_at: timestamptz_comparison_exp
+}
+
+# ordering options when selecting data from "singular_hidden_collections"
+input singular_hidden_collections_order_by {
+  collection_id: order_by
+  collections: collections_order_by
+  created_at: order_by
+}
+
+# primary key columns input for table: "singular_hidden_collections"
+input singular_hidden_collections_pk_columns_input {
+  collection_id: String!
+}
+
+# select columns of table "singular_hidden_collections"
+enum singular_hidden_collections_select_column {
+  # column name
+  collection_id
+  # column name
+  created_at
+}
+
+# columns and relationships of "singular_hidden_nfts"
+type singular_hidden_nfts {
+  created_at: timestamptz!
+  nft_id: String!
+  # An object relationship
+  nfts: nfts
+}
+
+# Boolean expression to filter rows from the table "singular_hidden_nfts". All fields are combined with a logical 'AND'.
+input singular_hidden_nfts_bool_exp {
+  _and: [singular_hidden_nfts_bool_exp]
+  _not: singular_hidden_nfts_bool_exp
+  _or: [singular_hidden_nfts_bool_exp]
+  created_at: timestamptz_comparison_exp
+  nft_id: String_comparison_exp
+  nfts: nfts_bool_exp
+}
+
+# ordering options when selecting data from "singular_hidden_nfts"
+input singular_hidden_nfts_order_by {
+  created_at: order_by
+  nft_id: order_by
+  nfts: nfts_order_by
+}
+
+# primary key columns input for table: "singular_hidden_nfts"
+input singular_hidden_nfts_pk_columns_input {
+  nft_id: String!
+}
+
+# select columns of table "singular_hidden_nfts"
+enum singular_hidden_nfts_select_column {
+  # column name
+  created_at
+  # column name
+  nft_id
+}
+
+# columns and relationships of "singular_nsfw_collections"
+type singular_nsfw_collections {
+  # An object relationship
+  collection: collections
+  collection_id: String!
+  created_at: timestamptz!
+  reason(
+    # JSON select path
+    path: String
+  ): jsonb
+}
+
+# aggregated selection of "singular_nsfw_collections"
+type singular_nsfw_collections_aggregate {
+  aggregate: singular_nsfw_collections_aggregate_fields
+  nodes: [singular_nsfw_collections!]!
+}
+
+# aggregate fields of "singular_nsfw_collections"
+type singular_nsfw_collections_aggregate_fields {
+  count(
+    columns: [singular_nsfw_collections_select_column!]
+    distinct: Boolean
+  ): Int
+  max: singular_nsfw_collections_max_fields
+  min: singular_nsfw_collections_min_fields
+}
+
+# order by aggregate values of table "singular_nsfw_collections"
+input singular_nsfw_collections_aggregate_order_by {
+  count: order_by
+  max: singular_nsfw_collections_max_order_by
+  min: singular_nsfw_collections_min_order_by
+}
+
+# Boolean expression to filter rows from the table "singular_nsfw_collections". All fields are combined with a logical 'AND'.
+input singular_nsfw_collections_bool_exp {
+  _and: [singular_nsfw_collections_bool_exp]
+  _not: singular_nsfw_collections_bool_exp
+  _or: [singular_nsfw_collections_bool_exp]
+  collection: collections_bool_exp
+  collection_id: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  reason: jsonb_comparison_exp
+}
+
+# aggregate max on columns
+type singular_nsfw_collections_max_fields {
+  collection_id: String
+  created_at: timestamptz
+}
+
+# order by max() on columns of table "singular_nsfw_collections"
+input singular_nsfw_collections_max_order_by {
+  collection_id: order_by
+  created_at: order_by
+}
+
+# aggregate min on columns
+type singular_nsfw_collections_min_fields {
+  collection_id: String
+  created_at: timestamptz
+}
+
+# order by min() on columns of table "singular_nsfw_collections"
+input singular_nsfw_collections_min_order_by {
+  collection_id: order_by
+  created_at: order_by
+}
+
+# ordering options when selecting data from "singular_nsfw_collections"
+input singular_nsfw_collections_order_by {
+  collection: collections_order_by
+  collection_id: order_by
+  created_at: order_by
+  reason: order_by
+}
+
+# primary key columns input for table: "singular_nsfw_collections"
+input singular_nsfw_collections_pk_columns_input {
+  collection_id: String!
+}
+
+# select columns of table "singular_nsfw_collections"
+enum singular_nsfw_collections_select_column {
+  # column name
+  collection_id
+  # column name
+  created_at
+  # column name
+  reason
+}
+
+# columns and relationships of "singular_nsfw_nfts"
+type singular_nsfw_nfts {
+  created_at: timestamptz!
+  # An object relationship
+  nft: nfts!
+  nft_id: String!
+  reason(
+    # JSON select path
+    path: String
+  ): jsonb
+}
+
+# aggregated selection of "singular_nsfw_nfts"
+type singular_nsfw_nfts_aggregate {
+  aggregate: singular_nsfw_nfts_aggregate_fields
+  nodes: [singular_nsfw_nfts!]!
+}
+
+# aggregate fields of "singular_nsfw_nfts"
+type singular_nsfw_nfts_aggregate_fields {
+  count(columns: [singular_nsfw_nfts_select_column!], distinct: Boolean): Int
+  max: singular_nsfw_nfts_max_fields
+  min: singular_nsfw_nfts_min_fields
+}
+
+# order by aggregate values of table "singular_nsfw_nfts"
+input singular_nsfw_nfts_aggregate_order_by {
+  count: order_by
+  max: singular_nsfw_nfts_max_order_by
+  min: singular_nsfw_nfts_min_order_by
+}
+
+# Boolean expression to filter rows from the table "singular_nsfw_nfts". All fields are combined with a logical 'AND'.
+input singular_nsfw_nfts_bool_exp {
+  _and: [singular_nsfw_nfts_bool_exp]
+  _not: singular_nsfw_nfts_bool_exp
+  _or: [singular_nsfw_nfts_bool_exp]
+  created_at: timestamptz_comparison_exp
+  nft: nfts_bool_exp
+  nft_id: String_comparison_exp
+  reason: jsonb_comparison_exp
+}
+
+# aggregate max on columns
+type singular_nsfw_nfts_max_fields {
+  created_at: timestamptz
+  nft_id: String
+}
+
+# order by max() on columns of table "singular_nsfw_nfts"
+input singular_nsfw_nfts_max_order_by {
+  created_at: order_by
+  nft_id: order_by
+}
+
+# aggregate min on columns
+type singular_nsfw_nfts_min_fields {
+  created_at: timestamptz
+  nft_id: String
+}
+
+# order by min() on columns of table "singular_nsfw_nfts"
+input singular_nsfw_nfts_min_order_by {
+  created_at: order_by
+  nft_id: order_by
+}
+
+# ordering options when selecting data from "singular_nsfw_nfts"
+input singular_nsfw_nfts_order_by {
+  created_at: order_by
+  nft: nfts_order_by
+  nft_id: order_by
+  reason: order_by
+}
+
+# primary key columns input for table: "singular_nsfw_nfts"
+input singular_nsfw_nfts_pk_columns_input {
+  nft_id: String!
+}
+
+# select columns of table "singular_nsfw_nfts"
+enum singular_nsfw_nfts_select_column {
+  # column name
+  created_at
+  # column name
+  nft_id
+  # column name
+  reason
+}
+
+# columns and relationships of "singular_verified_collections"
+type singular_verified_collections {
+  collection_id: String!
+  created_at: timestamptz
+}
+
+# Boolean expression to filter rows from the table
+# "singular_verified_collections". All fields are combined with a logical 'AND'.
+input singular_verified_collections_bool_exp {
+  _and: [singular_verified_collections_bool_exp]
+  _not: singular_verified_collections_bool_exp
+  _or: [singular_verified_collections_bool_exp]
+  collection_id: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+}
+
+# ordering options when selecting data from "singular_verified_collections"
+input singular_verified_collections_order_by {
+  collection_id: order_by
+  created_at: order_by
+}
+
+# primary key columns input for table: "singular_verified_collections"
+input singular_verified_collections_pk_columns_input {
+  collection_id: String!
+}
+
+# select columns of table "singular_verified_collections"
+enum singular_verified_collections_select_column {
+  # column name
+  collection_id
+  # column name
+  created_at
+}
+
+# expression to compare columns of type String. All fields are combined with logical 'AND'.
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String!]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+# subscription root
+type subscription_root {
+  # fetch data from the table: "art_contest_nfts"
+  art_contest_nfts(
+    # distinct select on columns
+    distinct_on: [art_contest_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_nfts_order_by!]
+    # filter the rows returned
+    where: art_contest_nfts_bool_exp
+  ): [art_contest_nfts!]!
+  # fetch aggregated fields from the table: "art_contest_nfts"
+  art_contest_nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [art_contest_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_nfts_order_by!]
+    # filter the rows returned
+    where: art_contest_nfts_bool_exp
+  ): art_contest_nfts_aggregate!
+  # fetch data from the table: "art_contest_nfts" using primary key columns
+  art_contest_nfts_by_pk(nft_id: String!): art_contest_nfts
+  # fetch data from the table: "art_contest_submissions"
+  art_contest_submissions(
+    # distinct select on columns
+    distinct_on: [art_contest_submissions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_submissions_order_by!]
+    # filter the rows returned
+    where: art_contest_submissions_bool_exp
+  ): [art_contest_submissions!]!
+  # fetch aggregated fields from the table: "art_contest_submissions"
+  art_contest_submissions_aggregate(
+    # distinct select on columns
+    distinct_on: [art_contest_submissions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_submissions_order_by!]
+    # filter the rows returned
+    where: art_contest_submissions_bool_exp
+  ): art_contest_submissions_aggregate!
+  # fetch data from the table: "art_contest_submissions" using primary key columns
+  art_contest_submissions_by_pk(id: Int!): art_contest_submissions
+  # fetch data from the table: "art_contest_votes"
+  art_contest_votes(
+    # distinct select on columns
+    distinct_on: [art_contest_votes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_votes_order_by!]
+    # filter the rows returned
+    where: art_contest_votes_bool_exp
+  ): [art_contest_votes!]!
+  # fetch aggregated fields from the table: "art_contest_votes"
+  art_contest_votes_aggregate(
+    # distinct select on columns
+    distinct_on: [art_contest_votes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [art_contest_votes_order_by!]
+    # filter the rows returned
+    where: art_contest_votes_bool_exp
+  ): art_contest_votes_aggregate!
+  # fetch data from the table: "art_contest_votes" using primary key columns
+  art_contest_votes_by_pk(caller: String!, nft_id: String!): art_contest_votes
+  # fetch data from the table: "changes"
+  changes(
+    # distinct select on columns
+    distinct_on: [changes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [changes_order_by!]
+    # filter the rows returned
+    where: changes_bool_exp
+  ): [changes!]!
+  # fetch aggregated fields from the table: "changes"
+  changes_aggregate(
+    # distinct select on columns
+    distinct_on: [changes_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [changes_order_by!]
+    # filter the rows returned
+    where: changes_bool_exp
+  ): changes_aggregate!
+  # fetch data from the table: "changes" using primary key columns
+  changes_by_pk(id: Int!): changes
+  # fetch data from the table: "collection_banners"
+  collection_banners(
+    # distinct select on columns
+    distinct_on: [collection_banners_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collection_banners_order_by!]
+    # filter the rows returned
+    where: collection_banners_bool_exp
+  ): [collection_banners!]!
+  # fetch data from the table: "collection_banners" using primary key columns
+  collection_banners_by_pk(collection_id: String!): collection_banners
+  # fetch data from the table: "collections"
+  collections(
+    # distinct select on columns
+    distinct_on: [collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collections_order_by!]
+    # filter the rows returned
+    where: collections_bool_exp
+  ): [collections!]!
+  # fetch aggregated fields from the table: "collections"
+  collections_aggregate(
+    # distinct select on columns
+    distinct_on: [collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [collections_order_by!]
+    # filter the rows returned
+    where: collections_bool_exp
+  ): collections_aggregate!
+  # fetch data from the table: "collections" using primary key columns
+  collections_by_pk(id: String!): collections
+  # fetch data from the table: "distinct_nfts"
+  distinct_nfts(
+    # distinct select on columns
+    distinct_on: [distinct_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [distinct_nfts_order_by!]
+    # filter the rows returned
+    where: distinct_nfts_bool_exp
+  ): [distinct_nfts!]!
+  # fetch aggregated fields from the table: "distinct_nfts"
+  distinct_nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [distinct_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [distinct_nfts_order_by!]
+    # filter the rows returned
+    where: distinct_nfts_bool_exp
+  ): distinct_nfts_aggregate!
+  # execute function "get_by_unicode" which returns "reactions"
+  get_by_unicode(
+    # input parameters for function "get_by_unicode"
+    args: get_by_unicode_args!
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): [reactions!]!
+  # execute function "get_by_unicode" and query aggregates on result of table type "reactions"
+  get_by_unicode_aggregate(
+    # input parameters for function "get_by_unicode"
+    args: get_by_unicode_args!
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): reactions_aggregate!
+  # execute function "get_newly_listed" which returns "nfts"
+  get_newly_listed(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): [nfts!]!
+  # execute function "get_newly_listed" and query aggregates on result of table type "nfts"
+  get_newly_listed_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): nfts_aggregate!
+  # execute function "get_newly_minted" which returns "nfts"
+  get_newly_minted(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): [nfts!]!
+  # execute function "get_newly_minted" and query aggregates on result of table type "nfts"
+  get_newly_minted_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): nfts_aggregate!
+  # fetch data from the table: "kanaria_houou"
+  kanaria_houou(
+    # distinct select on columns
+    distinct_on: [kanaria_houou_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [kanaria_houou_order_by!]
+    # filter the rows returned
+    where: kanaria_houou_bool_exp
+  ): [kanaria_houou!]!
+  # fetch aggregated fields from the table: "kanaria_houou"
+  kanaria_houou_aggregate(
+    # distinct select on columns
+    distinct_on: [kanaria_houou_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [kanaria_houou_order_by!]
+    # filter the rows returned
+    where: kanaria_houou_bool_exp
+  ): kanaria_houou_aggregate!
+  # fetch data from the table: "kanaria_houou" using primary key columns
+  kanaria_houou_by_pk(nft_id: String!): kanaria_houou
+  # fetch data from the table: "nfts"
+  nfts(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): [nfts!]!
+  # fetch aggregated fields from the table: "nfts"
+  nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_order_by!]
+    # filter the rows returned
+    where: nfts_bool_exp
+  ): nfts_aggregate!
+  # fetch data from the table: "nfts" using primary key columns
+  nfts_by_pk(id: String!): nfts
+  # fetch data from the table: "nfts_reactions_stats"
+  nfts_reactions_stats(
+    # distinct select on columns
+    distinct_on: [nfts_reactions_stats_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_reactions_stats_order_by!]
+    # filter the rows returned
+    where: nfts_reactions_stats_bool_exp
+  ): [nfts_reactions_stats!]!
+  # fetch aggregated fields from the table: "nfts_reactions_stats"
+  nfts_reactions_stats_aggregate(
+    # distinct select on columns
+    distinct_on: [nfts_reactions_stats_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_reactions_stats_order_by!]
+    # filter the rows returned
+    where: nfts_reactions_stats_bool_exp
+  ): nfts_reactions_stats_aggregate!
+  # fetch data from the table: "nfts_stats"
+  nfts_stats(
+    # distinct select on columns
+    distinct_on: [nfts_stats_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [nfts_stats_order_by!]
+    # filter the rows returned
+    where: nfts_stats_bool_exp
+  ): [nfts_stats!]!
+  # fetch data from the table: "reactions"
+  reactions(
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): [reactions!]!
+  # fetch aggregated fields from the table: "reactions"
+  reactions_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_order_by!]
+    # filter the rows returned
+    where: reactions_bool_exp
+  ): reactions_aggregate!
+  # fetch data from the table: "reactions" using primary key columns
+  reactions_by_pk(nft_id: String!, owner: String!, unicode: String!): reactions
+  # fetch data from the table: "reactions_unicode"
+  reactions_unicode(
+    # distinct select on columns
+    distinct_on: [reactions_unicode_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_unicode_order_by!]
+    # filter the rows returned
+    where: reactions_unicode_bool_exp
+  ): [reactions_unicode!]!
+  # fetch aggregated fields from the table: "reactions_unicode"
+  reactions_unicode_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_unicode_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_unicode_order_by!]
+    # filter the rows returned
+    where: reactions_unicode_bool_exp
+  ): reactions_unicode_aggregate!
+  # fetch data from the table: "reactions_users"
+  reactions_users(
+    # distinct select on columns
+    distinct_on: [reactions_users_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_users_order_by!]
+    # filter the rows returned
+    where: reactions_users_bool_exp
+  ): [reactions_users!]!
+  # fetch aggregated fields from the table: "reactions_users"
+  reactions_users_aggregate(
+    # distinct select on columns
+    distinct_on: [reactions_users_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [reactions_users_order_by!]
+    # filter the rows returned
+    where: reactions_users_bool_exp
+  ): reactions_users_aggregate!
+  # fetch data from the table: "singular_blacklisted_accounts"
+  singular_blacklisted_accounts(
+    # distinct select on columns
+    distinct_on: [singular_blacklisted_accounts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_blacklisted_accounts_order_by!]
+    # filter the rows returned
+    where: singular_blacklisted_accounts_bool_exp
+  ): [singular_blacklisted_accounts!]!
+  # fetch data from the table: "singular_blacklisted_accounts" using primary key columns
+  singular_blacklisted_accounts_by_pk(
+    account: String!
+  ): singular_blacklisted_accounts
+  # fetch data from the table: "singular_blacklisted_collections"
+  singular_blacklisted_collections(
+    # distinct select on columns
+    distinct_on: [singular_blacklisted_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_blacklisted_collections_order_by!]
+    # filter the rows returned
+    where: singular_blacklisted_collections_bool_exp
+  ): [singular_blacklisted_collections!]!
+  # fetch data from the table: "singular_blacklisted_collections" using primary key columns
+  singular_blacklisted_collections_by_pk(
+    collection_id: String!
+  ): singular_blacklisted_collections
+  # fetch data from the table: "singular_curated"
+  singular_curated(
+    # distinct select on columns
+    distinct_on: [singular_curated_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_curated_order_by!]
+    # filter the rows returned
+    where: singular_curated_bool_exp
+  ): [singular_curated!]!
+  # fetch data from the table: "singular_curated" using primary key columns
+  singular_curated_by_pk(nft_id: String!): singular_curated
+  # fetch data from the table: "singular_curated_collections"
+  singular_curated_collections(
+    # distinct select on columns
+    distinct_on: [singular_curated_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_curated_collections_order_by!]
+    # filter the rows returned
+    where: singular_curated_collections_bool_exp
+  ): [singular_curated_collections!]!
+  # fetch data from the table: "singular_curated_collections" using primary key columns
+  singular_curated_collections_by_pk(
+    collection_id: String!
+  ): singular_curated_collections
+  # fetch data from the table: "singular_hidden_collections"
+  singular_hidden_collections(
+    # distinct select on columns
+    distinct_on: [singular_hidden_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_hidden_collections_order_by!]
+    # filter the rows returned
+    where: singular_hidden_collections_bool_exp
+  ): [singular_hidden_collections!]!
+  # fetch data from the table: "singular_hidden_collections" using primary key columns
+  singular_hidden_collections_by_pk(
+    collection_id: String!
+  ): singular_hidden_collections
+  # fetch data from the table: "singular_hidden_nfts"
+  singular_hidden_nfts(
+    # distinct select on columns
+    distinct_on: [singular_hidden_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_hidden_nfts_order_by!]
+    # filter the rows returned
+    where: singular_hidden_nfts_bool_exp
+  ): [singular_hidden_nfts!]!
+  # fetch data from the table: "singular_hidden_nfts" using primary key columns
+  singular_hidden_nfts_by_pk(nft_id: String!): singular_hidden_nfts
+  # fetch data from the table: "singular_nsfw_collections"
+  singular_nsfw_collections(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_collections_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_collections_bool_exp
+  ): [singular_nsfw_collections!]!
+  # fetch aggregated fields from the table: "singular_nsfw_collections"
+  singular_nsfw_collections_aggregate(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_collections_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_collections_bool_exp
+  ): singular_nsfw_collections_aggregate!
+  # fetch data from the table: "singular_nsfw_collections" using primary key columns
+  singular_nsfw_collections_by_pk(
+    collection_id: String!
+  ): singular_nsfw_collections
+  # fetch data from the table: "singular_nsfw_nfts"
+  singular_nsfw_nfts(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_nfts_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_nfts_bool_exp
+  ): [singular_nsfw_nfts!]!
+  # fetch aggregated fields from the table: "singular_nsfw_nfts"
+  singular_nsfw_nfts_aggregate(
+    # distinct select on columns
+    distinct_on: [singular_nsfw_nfts_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_nsfw_nfts_order_by!]
+    # filter the rows returned
+    where: singular_nsfw_nfts_bool_exp
+  ): singular_nsfw_nfts_aggregate!
+  # fetch data from the table: "singular_nsfw_nfts" using primary key columns
+  singular_nsfw_nfts_by_pk(nft_id: String!): singular_nsfw_nfts
+  # fetch data from the table: "singular_verified_collections"
+  singular_verified_collections(
+    # distinct select on columns
+    distinct_on: [singular_verified_collections_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [singular_verified_collections_order_by!]
+    # filter the rows returned
+    where: singular_verified_collections_bool_exp
+  ): [singular_verified_collections!]!
+  # fetch data from the table: "singular_verified_collections" using primary key columns
+  singular_verified_collections_by_pk(
+    collection_id: String!
+  ): singular_verified_collections
+  # fetch data from the table: "system"
+  system(
+    # distinct select on columns
+    distinct_on: [system_select_column!]
+    # limit the number of rows returned
+    limit: Int
+    # skip the first n rows. Use only with order_by
+    offset: Int
+    # sort the rows by one or more columns
+    order_by: [system_order_by!]
+    # filter the rows returned
+    where: system_bool_exp
+  ): [system!]!
+  # fetch data from the table: "system" using primary key columns
+  system_by_pk(purchaseEnabled: Boolean!): system
+}
+
+# columns and relationships of "system"
+type system {
+  purchaseEnabled: Boolean!
+}
+
+# Boolean expression to filter rows from the table "system". All fields are combined with a logical 'AND'.
+input system_bool_exp {
+  _and: [system_bool_exp]
+  _not: system_bool_exp
+  _or: [system_bool_exp]
+  purchaseEnabled: Boolean_comparison_exp
+}
+
+# unique or primary key constraints on table "system"
+enum system_constraint {
+  # unique or primary key constraint
+  system_pkey
+}
+
+# response of any mutation on the table "system"
+type system_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+  # data of the affected rows by the mutation
+  returning: [system!]!
+}
+
+# on conflict condition type for table "system"
+input system_on_conflict {
+  constraint: system_constraint!
+  update_columns: [system_update_column!]!
+  where: system_bool_exp
+}
+
+# ordering options when selecting data from "system"
+input system_order_by {
+  purchaseEnabled: order_by
+}
+
+# primary key columns input for table: "system"
+input system_pk_columns_input {
+  purchaseEnabled: Boolean!
+}
+
+# select columns of table "system"
+enum system_select_column {
+  # column name
+  purchaseEnabled
+}
+
+# input type for updating data in table "system"
+input system_set_input {
+  purchaseEnabled: Boolean
+}
+
+# update columns of table "system"
+enum system_update_column {
+  # column name
+  purchaseEnabled
+}
+
+scalar timestamptz
+
+# expression to compare columns of type timestamptz. All fields are combined with logical 'AND'.
+input timestamptz_comparison_exp {
+  _eq: timestamptz
+  _gt: timestamptz
+  _gte: timestamptz
+  _in: [timestamptz!]
+  _is_null: Boolean
+  _lt: timestamptz
+  _lte: timestamptz
+  _neq: timestamptz
+  _nin: [timestamptz!]
+}
+

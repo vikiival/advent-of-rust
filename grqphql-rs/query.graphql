@@ -1,0 +1,8 @@
+query AllTokens {
+  nfts(where: { _and: [{ metadata_image: { _neq: "" } }] }, limit: 2) {
+    id
+    metadata_image
+    metadata
+    collectionId
+  }
+}
