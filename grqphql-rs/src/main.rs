@@ -4,6 +4,7 @@ use reqwest::Client;
 use graphql_client::{GraphQLQuery, Response};
 use regex::Regex;
 use std::collections::HashSet;
+use pinata_sdk::{PinataApi as PinataClient, PinByHash};
 
 const GRAPHQL_API: &str = "https://gql.rmrk.app/v1/graphql";
 // let ipfs_regex: regex::Regex = Regex::new(r"^ipfs://ipfs/([a-z0-9]+)").unwrap();
@@ -51,11 +52,18 @@ async fn main() {
         .collect();
 
     
-    let only_unique_nft_images = to_set(&nfts.iter().map(NFT::get_metadata_image).map(extract_ipfs_prefix).collect());
-    let only_unique_nft_metadata = to_set(&nfts.iter().map(NFT::get_metadata).map(extract_ipfs_prefix).collect());
+    let only_unique_nft_images: Vec<String> = nfts.iter().map(NFT::get_metadata_image).map(extract_ipfs_prefix).collect();
+    let _only_unique_nft_metadata = to_set(&nfts.iter().map(NFT::get_metadata).map(extract_ipfs_prefix).collect());
 
 
-    println!("{:#?}", nfts);
+    let hash = PinByHash::new(only_unique_nft_images.get(0).unwrap().clone());
+    let api = get_api();
+    let res = api.pin_by_hash(hash).await;
+
+    // pin_hashes_to_ipfs(only_unique_nft_images).await;
+    // pin_hashes_to_ipfs(only_unique_nft_metadata).await;
+
+    println!("{:#?}", res);
 }
 
 
@@ -102,7 +110,17 @@ fn to_set(s: &Vec<String>) -> HashSet<String> {
     s.iter().cloned().collect()
 }
 
-async fn pin_hashes_to_ipfs(set: HashSet<String>) {
-    let token = var("PINATA_API_KEY").expect("PINATA_API_KEY not set");
-    let pinata = pinata::PinataApi::new(token);
+fn get_api() -> PinataClient {
+    let api_key = var("PINATA_API_KEY").expect("PINATA_API_KEY is not set");
+    let secret_key = var("PINATA_API_SECRET").expect("PINATA_SECRET_KEY is not set");
+    PinataClient::new(api_key, secret_key).unwrap()
+}
+
+async fn _pin_hashes_to_ipfs(set: HashSet<String>) {
+    let api = get_api();
+    for hash in set {
+        let pin_by_hash = PinByHash::new(hash);
+        let pin_result = api.pin_by_hash(pin_by_hash).await;
+        println!("{:#?}", pin_result);
+    }
 }
