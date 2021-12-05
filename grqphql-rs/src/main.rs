@@ -1,6 +1,7 @@
 use reqwest::Client;
 use graphql_client::{GraphQLQuery, Response};
 use regex::Regex;
+use std::collections::HashSet;
 
 const GRAPHQL_API: &str = "https://gql.rmrk.app/v1/graphql";
 
@@ -26,7 +27,25 @@ pub struct AllTokens {
 
 #[tokio::main]
 async fn main() {
-     // this is the important line
+    let data = fetch_nfts().await;
+    let re = Regex::new(r"^[a-z0-9]+").unwrap();
+    let nfts: Vec<NFT> = data.nfts.iter()
+        .map(to_nft)
+        .filter(|nft| re.is_match(&nft.collection_id))
+        .collect();
+
+     println!("{:#?}", nfts);
+}
+
+
+fn unpack(s: &Option<String>) -> String {
+    match s {
+        Some(s) => s.clone(),
+        None => "".to_string(),
+    }
+}
+
+async fn fetch_nfts() -> all_tokens::ResponseData {
     let client = Client::new();
     let request_body = AllTokens::build_query(all_tokens::Variables);
 
@@ -40,25 +59,18 @@ async fn main() {
         .await
         .expect("failed to parse json");
 
-    //  println!("{:#?}", response);
-    let data = response.data.expect("data is null");
-    let re = Regex::new(r"^[a-z0-9]+").unwrap();
-    let nfts: Vec<NFT> = data.nfts.iter().map(|nft| NFT {
+    return response.data.expect("data is null");
+}
+
+fn to_nft(nft: &all_tokens::AllTokensNfts) -> NFT {
+    NFT {
         id: nft.id.clone(),
         metadata: unpack(&nft.metadata),
         metadata_image: unpack(&nft.metadata_image),
         collection_id: nft.collection_id.clone(),
-    })
-    .filter(|nft| re.is_match(&nft.collection_id))
-    .collect();
-
-     println!("{:#?}", nfts);
-}
-
-
-fn unpack(s: &Option<String>) -> String {
-    match s {
-        Some(s) => s.clone(),
-        None => "".to_string(),
     }
 }
+
+// fn to_set(s: &Vec<String>) -> HashSet<String> {
+//     s.iter().cloned().collect()
+// }
