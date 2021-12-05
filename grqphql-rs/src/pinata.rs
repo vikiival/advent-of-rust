@@ -27,7 +27,7 @@ impl PinataApi {
     }
   }
 
-  pub async fn test_authentication(&self) -> Result<(), ApiError> {
+  pub async fn test_authentication(&self) -> Result<(), Err> {
     let response = self.client.get(&api_url("/data/testAuthentication"))
       .send()
       .await?;
@@ -35,7 +35,7 @@ impl PinataApi {
     self.parse_ok_result(response).await
   }
 
-  pub async fn pin_by_hash(&self, hash: PinByHash) -> Result<PinByHashResult, ApiError> {
+  pub async fn pin_by_hash(&self, hash: PinByHash) -> Result<PinByHashResult, Err> {
     let response = self.client.post(&api_url("/pinning/pinByHash"))
       .json(&hash)
       .send()
@@ -45,7 +45,7 @@ impl PinataApi {
   }
 
 
-  async fn parse_ok_result(&self, response: Response) -> Result<(), ApiError> {
+  async fn parse_ok_result(&self, response: Response) -> Result<(), Err> {
     if response.status().is_success() {
       Ok(())
     } else {

@@ -42,7 +42,6 @@ pub struct AllTokens {
 #[tokio::main]
 async fn main() {
     dotenv().ok();
-    let token = var("PINATA_API_KEY").expect("PINATA_API_KEY not set");
 
     let data = fetch_nfts().await;
     let re = Regex::new(r"^[a-z0-9]+").unwrap();
@@ -52,8 +51,8 @@ async fn main() {
         .collect();
 
     
-    let only_unique_nft_images = to_set(&nfts.iter().map(NFT::get_metadata_image).collect());
-    let only_unique_nft_metadata = to_set(&nfts.iter().map(NFT::get_metadata).collect());
+    let only_unique_nft_images = to_set(&nfts.iter().map(NFT::get_metadata_image).map(extract_ipfs_prefix).collect());
+    let only_unique_nft_metadata = to_set(&nfts.iter().map(NFT::get_metadata).map(extract_ipfs_prefix).collect());
 
 
     println!("{:#?}", nfts);
@@ -93,12 +92,17 @@ fn to_nft(nft: &all_tokens::AllTokensNfts) -> NFT {
     }
 }
 
-fn extract_ipfs_prefix(s: &str) -> String {
+fn extract_ipfs_prefix(s: String) -> String {
     let re = Regex::new(r"^ipfs://ipfs/([a-z0-9]+)").unwrap();
-    let ipfs_prefix = re.captures(s).unwrap().get(1).map_or("", |m| m.as_str());
+    let ipfs_prefix = re.captures(&s).unwrap().get(1).map_or("", |m| m.as_str());
     ipfs_prefix.to_string()
 }
 
 fn to_set(s: &Vec<String>) -> HashSet<String> {
     s.iter().cloned().collect()
+}
+
+async fn pin_hashes_to_ipfs(set: HashSet<String>) {
+    let token = var("PINATA_API_KEY").expect("PINATA_API_KEY not set");
+    let pinata = pinata::PinataApi::new(token);
 }
