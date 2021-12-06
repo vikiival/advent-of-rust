@@ -52,18 +52,12 @@ async fn main() {
         .collect();
 
     
-    let only_unique_nft_images: Vec<String> = nfts.iter().map(NFT::get_metadata_image).map(extract_ipfs_prefix).collect();
-    let _only_unique_nft_metadata = to_set(&nfts.iter().map(NFT::get_metadata).map(extract_ipfs_prefix).collect());
+    let only_unique_nft_images = to_set(&nfts.iter().map(NFT::get_metadata_image).map(extract_ipfs_prefix).collect());
+    // let _only_unique_nft_metadata = to_set(&nfts.iter().map(NFT::get_metadata).map(extract_ipfs_prefix).collect());
 
-
-    let hash = PinByHash::new(only_unique_nft_images.get(0).unwrap().clone());
-    let api = get_api();
-    let res = api.pin_by_hash(hash).await;
-
-    // pin_hashes_to_ipfs(only_unique_nft_images).await;
+    pin_hashes_to_ipfs(only_unique_nft_images).await;
     // pin_hashes_to_ipfs(only_unique_nft_metadata).await;
 
-    println!("{:#?}", res);
 }
 
 
@@ -116,7 +110,7 @@ fn get_api() -> PinataClient {
     PinataClient::new(api_key, secret_key).unwrap()
 }
 
-async fn _pin_hashes_to_ipfs(set: HashSet<String>) {
+async fn pin_hashes_to_ipfs(set: HashSet<String>) {
     let api = get_api();
     for hash in set {
         let pin_by_hash = PinByHash::new(hash);
