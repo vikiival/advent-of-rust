@@ -13,4 +13,4 @@ graphql_client = "0.10.0" # for our GraphQL client
 serde = "1.0.130" # for our GraphQL client
 regex = "1.5.4"
 dotenv = "0.10.0" # for our environment variables%
-pinata-sdk = "1.0.0" # for our Pinata SDK
+pinata-sdk = { git = "https://github.com/vikiival/pinata-sdk", branch = "feat/updating-deps" }
