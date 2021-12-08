@@ -52,8 +52,8 @@ async fn main() {
         .collect();
 
     
-    let only_unique_nft_images = to_set(&nfts.iter().map(NFT::get_metadata_image).map(extract_ipfs_prefix).collect());
-    // let _only_unique_nft_metadata = to_set(&nfts.iter().map(NFT::get_metadata).map(extract_ipfs_prefix).collect());
+    let only_unique_nft_images = to_set(&nfts.iter().map(NFT::get_metadata_image).map(extract_ipfs_prefix).filter(is_string_empty).collect());
+    // let only_unique_nft_metadata = to_set(&nfts.iter().map(NFT::get_metadata).map(extract_ipfs_prefix).collect());
 
     pin_hashes_to_ipfs(only_unique_nft_images).await;
     // pin_hashes_to_ipfs(only_unique_nft_metadata).await;
@@ -96,8 +96,17 @@ fn to_nft(nft: &all_tokens::AllTokensNfts) -> NFT {
 
 fn extract_ipfs_prefix(s: String) -> String {
     let re = Regex::new(r"^ipfs://ipfs/([a-z0-9]+)").unwrap();
-    let ipfs_prefix = re.captures(&s).unwrap().get(1).map_or("", |m| m.as_str());
+    println!("{}", s);
+    let ipfs_prefix = match re.captures(&s) {
+        Some(v) => v.get(1).map_or("", |m| m.as_str()),
+        None => "",
+    };
+
     ipfs_prefix.to_string()
+}
+
+fn is_string_empty(s: &String) -> bool {
+    s.is_empty()
 }
 
 fn to_set(s: &Vec<String>) -> HashSet<String> {
